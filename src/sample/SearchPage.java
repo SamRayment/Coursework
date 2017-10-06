@@ -1,8 +1,7 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,11 +13,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.net.URL;
 
 
-public class Main extends Application {
+
+public class SearchPage extends Application {
 
         @Override
         public void start(Stage stage) throws Exception {
