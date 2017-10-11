@@ -1,5 +1,3 @@
-package sample;
-
 import javafx.application.Application;
 
 import javafx.geometry.Insets;
@@ -43,14 +41,14 @@ public class SearchPage extends Application {
 
             VBox checkBoxBox = new VBox(5);
             checkBoxBox.setPadding(new Insets(10));
-            CheckBox [] myCheckBox = new CheckBox[4];
-            myCheckBox[0] = new CheckBox("CCTV");
-            myCheckBox[1] = new CheckBox("Electric Charging");
-            myCheckBox[2] = new CheckBox("Disabled Parking");
-            myCheckBox[3] = new CheckBox("Child Parking");
+    CheckBox [] myCheckBox = new CheckBox[4];
+    myCheckBox[0] = new CheckBox("CCTV");
+    myCheckBox[1] = new CheckBox("Electric Charging");
+    myCheckBox[2] = new CheckBox("Disabled Parking");
+    myCheckBox[3] = new CheckBox("Child Parking");
             checkBoxBox.getChildren().addAll(myCheckBox);
 
-            Button searchButton = new Button("Search");
+    Button searchButton = new Button("Search");
             searchButton.setPrefSize(200, 50);
             searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px;");
 
@@ -59,7 +57,7 @@ public class SearchPage extends Application {
             rootPane.getChildren().add(townCitySelector);
             rootPane.getChildren().add(checkBoxBox);
             rootPane.getChildren().add(searchButton);
-        }
+}
 
         public static void main(String[] args) {
             launch(args);
