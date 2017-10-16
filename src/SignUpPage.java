@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class LoginPage extends Application {
+public class SignUpPage extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -29,11 +29,11 @@ public class LoginPage extends Application {
         stage.setResizable(false);
 
         Scene scene = new Scene(rootPane, 240  , 368);
-        stage.setTitle("Login Page");
+        stage.setTitle("Sign up Page");
         stage.setScene(scene);
         stage.show();
 
-        stage.setTitle("Login Page");
+        stage.setTitle("Sign up Page");
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
@@ -44,15 +44,15 @@ public class LoginPage extends Application {
         iv1.setFitHeight(36);
         iv1.setImage(image);
 
-        Label titleLabel = new Label ("Login");
+        Label titleLabel = new Label ("Sign up");
         titleLabel.setStyle("-fx-text-fill: white;");
         titleLabel.setFont(new Font( 18));
         picAndTitlePane.getChildren().add(iv1);
         picAndTitlePane.getChildren().add(titleLabel);
 
 
-        Label title = new Label("Please sign in to enter review");
-        title.setFont(new Font("Arial", 14));
+        Label title = new Label("Please create a username and password");
+        title.setFont(new Font("Arial", 12));
 
         TextField usernameTextfield = new TextField("Please enter username");
         usernameTextfield.setPrefWidth(100);
@@ -62,7 +62,7 @@ public class LoginPage extends Application {
 
 
 
-        Button searchButton = new Button("Login");
+        Button searchButton = new Button("Enter");
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
 
         titlePane.getChildren().add(picAndTitlePane);

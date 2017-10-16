@@ -49,7 +49,7 @@ public class SearchPage extends Application {
             checkBoxBox.getChildren().addAll(myCheckBox);
 
     Button searchButton = new Button("Search");
-            searchButton.setPrefSize(200, 50);
+            searchButton.setPrefSize(200, 20);
             searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px;");
 
             rootPane.getChildren().add(title);

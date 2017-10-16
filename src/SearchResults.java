@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -29,13 +30,12 @@ public class SearchResults extends Application {
         VBox titlePane = new VBox(5);
         HBox picAndTitlePane = new HBox(5);
 
-        Image image = new Image("arrow.jpg");
-        ImageView iv1 = new ImageView();
-        iv1.setFitWidth(36);
-        iv1.setFitHeight(36);
-        iv1.setImage(image);
 
-        picAndTitlePane.getChildren().add(iv1);
+        Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
+        Button backButton = new Button();
+        backButton.setGraphic(new ImageView(imageArrow));
+        picAndTitlePane.getChildren().add(backButton);
+
         titlePane.prefWidthProperty().bind(rootPane.widthProperty());
         titlePane.prefHeightProperty().bind(rootPane.heightProperty().multiply(0.10));
         titlePane.setStyle("-fx-background-color: #4a86e8ff;");
