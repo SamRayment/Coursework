@@ -56,7 +56,7 @@ public class SignUpPage extends Application {
 
         TextField usernameTextfield = new TextField("Please enter username");
         usernameTextfield.setPrefWidth(100);
-        //usernameTextfield.setPadding(new Insets(10));
+        usernameTextfield.setPadding(new Insets(10));
         PasswordField passwordfield = new PasswordField();
         passwordfield.setPromptText("Please enter password");
 
