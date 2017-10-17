@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -31,12 +32,10 @@ public class CarPark extends Application {
 
         titlePane.setStyle("-fx-background-color: #4a86e8ff;");
 
-        Image image = new Image("arrow.jpg");
-        ImageView iv1 = new ImageView();
-        iv1.setFitWidth(36);
-        iv1.setFitHeight(36);
-        iv1.setImage(image);
-        picAndTitlePane.getChildren().add(iv1);
+        Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
+        Button backButton = new Button();
+        backButton.setGraphic(new ImageView(imageArrow));
+        picAndTitlePane.getChildren().add(backButton);
 
         Label titleExample = new Label("(Title would be here)");
         titleExample.setStyle("-fx-text-fill: white;");

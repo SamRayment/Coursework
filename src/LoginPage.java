@@ -24,6 +24,9 @@ public class LoginPage extends Application {
 
         HBox picAndTitlePane = new HBox(20);
         VBox loginPane =new VBox(20);
+
+        loginPane.setPadding(new Insets(20));
+
         loginPane.setAlignment(Pos.CENTER);
 
         stage.setResizable(false);
@@ -38,25 +41,23 @@ public class LoginPage extends Application {
         stage.show();
         stage.setResizable(false);
 
-        Image image = new Image("arrow.jpg");
-        ImageView iv1 = new ImageView();
-        iv1.setFitWidth(36);
-        iv1.setFitHeight(36);
-        iv1.setImage(image);
+        Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
+        Button backButton = new Button();
+        backButton.setGraphic(new ImageView(imageArrow));
+        picAndTitlePane.getChildren().add(backButton);
 
         Label titleLabel = new Label ("Login");
         titleLabel.setStyle("-fx-text-fill: white;");
         titleLabel.setFont(new Font( 18));
-        picAndTitlePane.getChildren().add(iv1);
         picAndTitlePane.getChildren().add(titleLabel);
 
 
         Label title = new Label("Please sign in to enter review");
         title.setFont(new Font("Arial", 14));
 
-        TextField usernameTextfield = new TextField("Please enter username");
+        TextField usernameTextfield = new TextField();
         usernameTextfield.setPrefWidth(100);
-        //usernameTextfield.setPadding(new Insets(10));
+        usernameTextfield.setPromptText("Please enter username");
         PasswordField passwordfield = new PasswordField();
         passwordfield.setPromptText("Please enter password");
 
@@ -66,7 +67,7 @@ public class LoginPage extends Application {
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
 
         titlePane.getChildren().add(picAndTitlePane);
-        loginPane.getChildren().add(titlePane);
+        rootPane.getChildren().add(titlePane);
         loginPane.getChildren().add(title);
         loginPane.getChildren().add(usernameTextfield);
         loginPane.getChildren().add(passwordfield);

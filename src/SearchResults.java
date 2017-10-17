@@ -36,6 +36,8 @@ public class SearchResults extends Application {
         backButton.setGraphic(new ImageView(imageArrow));
         picAndTitlePane.getChildren().add(backButton);
 
+
+        titlePane.getChildren().add(picAndTitlePane);
         titlePane.prefWidthProperty().bind(rootPane.widthProperty());
         titlePane.prefHeightProperty().bind(rootPane.heightProperty().multiply(0.10));
         titlePane.setStyle("-fx-background-color: #4a86e8ff;");
@@ -46,8 +48,6 @@ public class SearchResults extends Application {
         picAndTitlePane.getChildren().add(titleLabel);
 
 
-
-        titlePane.getChildren().add(picAndTitlePane);
 
         ScrollPane searchPane = new ScrollPane();
         searchPane.setPrefViewportHeight(332);
