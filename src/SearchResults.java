@@ -1,3 +1,5 @@
+import Models.Location;
+import Models.LocationService;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -12,11 +14,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+
 
 public class SearchResults extends Application {
+        public static DatabaseConnection database;
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        database = new DatabaseConnection("DatabaseCoursework.db");
 
         VBox rootPane = new VBox();
         Scene scene = new Scene(rootPane, 240  , 368);
@@ -54,5 +62,11 @@ public class SearchResults extends Application {
 
         rootPane.getChildren().add(titlePane);
         rootPane.getChildren().add(searchPane);
+    }
+    public static void doSelectAllTest(){
+        ArrayList<LocationService> testList = new ArrayList<>();
+        for ()
+
+        )
     }
 }
