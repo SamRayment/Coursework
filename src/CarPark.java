@@ -13,10 +13,19 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
-public class CarPark extends Application {
+public class CarPark {
 
-    @Override
-    public void start(Stage stage) throws Exception {
+    static Stage parent;
+
+    public CarPark(Stage theParent) {
+
+        Stage stage = new Stage();
+        parent = theParent;
+        parent.hide();
+        start(stage);
+
+    }
+    public void start(Stage stage)  {
         VBox rootPane = new VBox(5);
         Scene scene = new Scene(rootPane, 280, 448);
 
@@ -35,6 +44,7 @@ public class CarPark extends Application {
         Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
+        backButton.setOnAction((ActionEvent e) -> returnStage(stage));
         picAndTitlePane.getChildren().add(backButton);
 
         Label titleExample = new Label("(Title would be here)");
@@ -48,9 +58,8 @@ public class CarPark extends Application {
 
         Hyperlink reviewLink = new Hyperlink();
         reviewLink.setText("View Reviews");
-        reviewLink.setOnAction((ActionEvent e) -> {
-            System.out.println("This link is clicked");
-        });
+        reviewLink.setOnAction((ActionEvent e) -> openNewStage(stage));
+
         reviewPane.getChildren().add(reviewLink);
 
         HBox picPane = new HBox(10);
@@ -185,5 +194,12 @@ public class CarPark extends Application {
         rootPane.getChildren().add(timesPane);
         rootPane.getChildren().add(costsPane);
 
+    }
+    public static void openNewStage(Stage parent) {
+        AllReviews newStage = new AllReviews(parent);
+    }
+    public static void returnStage(Stage parent){
+        SearchResults returnStage = new SearchResults(
+                parent);
     }
 }

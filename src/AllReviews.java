@@ -1,4 +1,3 @@
-
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,19 +12,18 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+public class AllReviews {
 
-public class SearchResults {
+    static Stage parent;
 
-        static Stage parent;
+    public AllReviews(Stage theParent) {
 
-        public SearchResults(Stage theParent) {
+        Stage stage = new Stage();
+        parent = theParent;
+        parent.hide();
+        start(stage);
 
-            Stage stage = new Stage();
-            parent = theParent;
-            parent.hide();
-            start(stage);
-
-        }
+    }
 
     public void start(Stage stage) {
 
@@ -33,7 +31,7 @@ public class SearchResults {
         VBox rootPane = new VBox();
         Scene scene = new Scene(rootPane, 240  , 368);
 
-        stage.setTitle("Search Page");
+        stage.setTitle("Reviews Page");
         stage.setScene(scene);
         stage.show();
 
@@ -55,23 +53,25 @@ public class SearchResults {
         titlePane.prefWidthProperty().bind(rootPane.widthProperty());
         titlePane.prefHeightProperty().bind(rootPane.heightProperty().multiply(0.10));
         titlePane.setStyle("-fx-background-color: #4a86e8ff;");
-        Label titleLabel = new Label("Search Results");
+        Label titleLabel = new Label("Reviews");
         titleLabel.prefWidthProperty().bind(rootPane.widthProperty());
         titleLabel.setStyle("-fx-text-fill: white;");
         titleLabel.setFont(new Font( 18));
         picAndTitlePane.getChildren().add(titleLabel);
 
 
+
         Pane searchPane = new Pane();
         Hyperlink link = new Hyperlink();
-        link.setText("click here to move onto next stage");
+        link.setText("Create Review");
         link.setOnAction((ActionEvent e) -> openNewStage(stage));
         searchPane.getChildren().add(link);
+
 
         rootPane.getChildren().add(titlePane);
         rootPane.getChildren().add(searchPane);
     }
     public static void openNewStage(Stage parent) {
-        CarPark newStage = new CarPark(parent);
+        LoginPage newStage = new LoginPage(parent);
     }
 }

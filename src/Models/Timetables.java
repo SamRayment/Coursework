@@ -1,6 +1,7 @@
 package Models;
 
 public class Timetables {
+    private int timetableId;
     private int carParkId;
     private String weekdayOpening;
     private String weekdayClosing;
@@ -10,6 +11,27 @@ public class Timetables {
     private String sundayClosing;
     private String publicHolidayOpening;
     private String publicHolidayClosing;
+
+    public Timetables(int timetableId, int carParkId, String weekdayOpening, String weekdayClosing, String saturdayOpening, String saturdayClosing, String sundayOpening, String sundayClosing, String publicHolidayOpening, String publicHolidayClosing) {
+        this.timetableId = timetableId;
+        this.carParkId = carParkId;
+        this.weekdayOpening = weekdayOpening;
+        this.weekdayClosing = weekdayClosing;
+        this.saturdayOpening = saturdayOpening;
+        this.saturdayClosing = saturdayClosing;
+        this.sundayOpening = sundayOpening;
+        this.sundayClosing = sundayClosing;
+        this.publicHolidayOpening = publicHolidayOpening;
+        this.publicHolidayClosing = publicHolidayClosing;
+    }
+
+    public int getTimetableId() {
+        return timetableId;
+    }
+
+    public void setTimetableId(int timetableId) {
+        this.timetableId = timetableId;
+    }
 
     public int getCarParkId() {
         return carParkId;
@@ -80,18 +102,6 @@ public class Timetables {
     }
 
     public void setPublicHolidayClosing(String publicHolidayClosing) {
-        this.publicHolidayClosing = publicHolidayClosing;
-    }
-
-    public Timetables(int carParkId, String weekdayOpening, String weekdayClosing, String saturdayOpening, String saturdayClosing, String sundayOpening, String sundayClosing, String publicHolidayOpening, String publicHolidayClosing) {
-        this.carParkId = carParkId;
-        this.weekdayOpening = weekdayOpening;
-        this.weekdayClosing = weekdayClosing;
-        this.saturdayOpening = saturdayOpening;
-        this.saturdayClosing = saturdayClosing;
-        this.sundayOpening = sundayOpening;
-        this.sundayClosing = sundayClosing;
-        this.publicHolidayOpening = publicHolidayOpening;
         this.publicHolidayClosing = publicHolidayClosing;
     }
 

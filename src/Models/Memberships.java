@@ -1,11 +1,11 @@
 package Models;
 
-public class Membership {
+public class Memberships {
     private int membershipId;
     private String username;
     private String password;
 
-    public Membership(int membershipId, String username, String password) {
+    public Memberships(int membershipId, String username, String password) {
         this.membershipId = membershipId;
         this.username = username;
         this.password = password;
@@ -37,7 +37,7 @@ public class Membership {
 
     @Override
     public String toString() {
-        return "Membership{" +
+        return "Memberships{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';

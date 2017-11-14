@@ -1,5 +1,6 @@
 import javafx.application.Application;
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,16 +15,25 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class LoginPage extends Application {
+public class LoginPage {
+    static Stage parent;
 
-    @Override
-    public void start(Stage stage) throws Exception {
+    public LoginPage(Stage theParent) {
+
+        Stage stage = new Stage();
+        parent = theParent;
+        parent.hide();
+        start(stage);
+
+    }
+
+    public void start(Stage stage) {
         VBox rootPane = new VBox(10);
         VBox titlePane = new VBox();
         titlePane.setStyle("-fx-background-color: #4a86e8ff;");
 
         HBox picAndTitlePane = new HBox(20);
-        VBox loginPane =new VBox(20);
+        VBox loginPane = new VBox(20);
 
         loginPane.setPadding(new Insets(20));
 
@@ -31,7 +41,7 @@ public class LoginPage extends Application {
 
         stage.setResizable(false);
 
-        Scene scene = new Scene(rootPane, 240  , 368);
+        Scene scene = new Scene(rootPane, 240, 368);
         stage.setTitle("Login Page");
         stage.setScene(scene);
         stage.show();
@@ -44,11 +54,12 @@ public class LoginPage extends Application {
         Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
+        backButton.setOnAction((ActionEvent e) -> returnStage(stage));
         picAndTitlePane.getChildren().add(backButton);
 
-        Label titleLabel = new Label ("Login");
+        Label titleLabel = new Label("Login");
         titleLabel.setStyle("-fx-text-fill: white;");
-        titleLabel.setFont(new Font( 18));
+        titleLabel.setFont(new Font(18));
         picAndTitlePane.getChildren().add(titleLabel);
 
 
@@ -62,9 +73,9 @@ public class LoginPage extends Application {
         passwordfield.setPromptText("Please enter password");
 
 
-
         Button searchButton = new Button("Login");
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
+        searchButton.setOnAction((ActionEvent ae) -> openNewStage(stage));
 
         titlePane.getChildren().add(picAndTitlePane);
         rootPane.getChildren().add(titlePane);
@@ -74,9 +85,12 @@ public class LoginPage extends Application {
         loginPane.getChildren().add(searchButton);
         rootPane.getChildren().add(loginPane);
     }
+    public static void returnStage(Stage parent){
+        CarPark returnStage = new CarPark(parent);
+    }
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void openNewStage(Stage parent) {
+        CreateReviewPage newStage = new CreateReviewPage(parent);
     }
 }
 

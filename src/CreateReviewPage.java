@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,10 +12,20 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class CreateReviewPage extends Application {
+public class CreateReviewPage {
 
-    @Override
-    public void start(Stage stage) throws Exception {
+
+    static Stage parent;
+
+    public CreateReviewPage(Stage theParent) {
+
+        Stage stage = new Stage();
+        parent = theParent;
+        parent.hide();
+        start(stage);
+
+    }
+    public void start(Stage stage) {
 
         VBox rootPane = new VBox(10);
         Scene scene = new Scene(rootPane, 240, 368);
@@ -32,6 +43,9 @@ public class CreateReviewPage extends Application {
         Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
+        backButton.setOnAction((ActionEvent e) -> {
+            parent.show();
+        });
         picAndTitlePane.getChildren().add(backButton);
 
 
@@ -48,24 +62,40 @@ public class CreateReviewPage extends Application {
         HBox reviewStarPane = new HBox(10);
 
         Image greyStar = new Image(getClass().getResourceAsStream("star.jpg"));
+        Image yellowStar = new Image(getClass().getResourceAsStream("YellowStar.jpg"));
         Button firstStar = new Button();
         firstStar.setGraphic(new ImageView(greyStar));
+        firstStar.setOnAction((ActionEvent e) -> {
+            firstStar.setGraphic(new ImageView(yellowStar));
+        });
         reviewStarPane.getChildren().add(firstStar);
 
         Button secondStar = new Button();
         secondStar.setGraphic(new ImageView(greyStar));
+        secondStar.setOnAction((ActionEvent e) -> {
+            secondStar.setGraphic(new ImageView(yellowStar));
+        });
         reviewStarPane.getChildren().add(secondStar);
 
         Button thirdStar = new Button();
         thirdStar.setGraphic(new ImageView(greyStar));
+        thirdStar.setOnAction((ActionEvent e) -> {
+            thirdStar.setGraphic(new ImageView(yellowStar));
+        });
         reviewStarPane.getChildren().add(thirdStar);
 
         Button fourthStar = new Button();
         fourthStar.setGraphic(new ImageView(greyStar));
+        fourthStar.setOnAction((ActionEvent e) -> {
+            fourthStar.setGraphic(new ImageView(yellowStar));
+        });
         reviewStarPane.getChildren().add(fourthStar);
 
         Button fifthStar = new Button();
         fifthStar.setGraphic(new ImageView(greyStar));
+        fifthStar.setOnAction((ActionEvent e) -> {
+            fifthStar.setGraphic(new ImageView(yellowStar));
+        });
         reviewStarPane.getChildren().add(fifthStar);
 
         TextArea review = new TextArea();
@@ -75,6 +105,7 @@ public class CreateReviewPage extends Application {
         Button sendButton = new Button("Send");
         sendButton.setPrefSize(200, 20);
         sendButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px;");
+        sendButton.setOnAction((ActionEvent e) -> returnStage(stage));
         buttonPane.getChildren().add(sendButton);
 
         buttonPane.setAlignment(Pos.CENTER);
@@ -83,6 +114,8 @@ public class CreateReviewPage extends Application {
         rootPane.getChildren().add(reviewStarPane);
         rootPane.getChildren().add(review);
         rootPane.getChildren().add(buttonPane);
-
+    }
+    public static void returnStage(Stage parent){
+        AllReviews returnStage = new AllReviews(parent);
     }
 }
