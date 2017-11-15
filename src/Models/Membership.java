@@ -1,11 +1,11 @@
 package Models;
 
-public class Memberships {
+public class Membership {
     private int membershipId;
     private String username;
     private String password;
 
-    public Memberships(int membershipId, String username, String password) {
+    public Membership(int membershipId, String username, String password) {
         this.membershipId = membershipId;
         this.username = username;
         this.password = password;

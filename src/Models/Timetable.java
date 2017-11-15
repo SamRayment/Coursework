@@ -1,6 +1,6 @@
 package Models;
 
-public class Timetables {
+public class Timetable {
     private int timetableId;
     private int carParkId;
     private String weekdayOpening;
@@ -12,7 +12,7 @@ public class Timetables {
     private String publicHolidayOpening;
     private String publicHolidayClosing;
 
-    public Timetables(int timetableId, int carParkId, String weekdayOpening, String weekdayClosing, String saturdayOpening, String saturdayClosing, String sundayOpening, String sundayClosing, String publicHolidayOpening, String publicHolidayClosing) {
+    public Timetable(int timetableId, int carParkId, String weekdayOpening, String weekdayClosing, String saturdayOpening, String saturdayClosing, String sundayOpening, String sundayClosing, String publicHolidayOpening, String publicHolidayClosing) {
         this.timetableId = timetableId;
         this.carParkId = carParkId;
         this.weekdayOpening = weekdayOpening;

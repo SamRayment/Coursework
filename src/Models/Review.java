@@ -1,13 +1,13 @@
 package Models;
 
-public class Reviews {
+public class Review {
     private int membershipId;
     private int carParkId;
     private String dateOfReview;
     private String explanation;
     private int outOfFive;
 
-    public Reviews(int membershipId, int carParkId, String dateOfReview, String explanation, int outOfFive) {
+    public Review(int membershipId, int carParkId, String dateOfReview, String explanation, int outOfFive) {
         this.membershipId = membershipId;
         this.carParkId = carParkId;
         this.dateOfReview = dateOfReview;
