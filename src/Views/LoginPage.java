@@ -1,13 +1,10 @@
-import javafx.application.Application;
+package Views;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -51,7 +48,7 @@ public class LoginPage {
         stage.show();
         stage.setResizable(false);
 
-        Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
+        Image imageArrow = new Image(getClass().getResourceAsStream("Resources/arrow.jpg"));
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setOnAction((ActionEvent e) -> returnStage(stage));
@@ -77,12 +74,17 @@ public class LoginPage {
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
         searchButton.setOnAction((ActionEvent ae) -> openNewStage(stage));
 
+        Hyperlink link = new Hyperlink();
+        link.setText("Click here to sign up");
+        link.setOnAction((ActionEvent e) -> linkToSignUp(stage));
+
         titlePane.getChildren().add(picAndTitlePane);
         rootPane.getChildren().add(titlePane);
         loginPane.getChildren().add(title);
         loginPane.getChildren().add(usernameTextfield);
         loginPane.getChildren().add(passwordfield);
         loginPane.getChildren().add(searchButton);
+        loginPane.getChildren().add(link);
         rootPane.getChildren().add(loginPane);
     }
     public static void returnStage(Stage parent){
@@ -92,6 +94,8 @@ public class LoginPage {
     public static void openNewStage(Stage parent) {
         CreateReviewPage newStage = new CreateReviewPage(parent);
     }
+
+    public static void linkToSignUp(Stage parent) {SignUpPage newStage = new SignUpPage(parent);}
 }
 
 

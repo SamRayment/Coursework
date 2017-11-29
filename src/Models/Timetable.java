@@ -12,8 +12,8 @@ public class Timetable {
     private String publicHolidayOpening;
     private String publicHolidayClosing;
 
-    public Timetable(int timetableId, int carParkId, String weekdayOpening, String weekdayClosing, String saturdayOpening, String saturdayClosing, String sundayOpening, String sundayClosing, String publicHolidayOpening, String publicHolidayClosing) {
-        this.timetableId = timetableId;
+    public Timetable(int carParkId, String weekdayOpening, String weekdayClosing, String saturdayOpening, String saturdayClosing, String sundayOpening, String sundayClosing, String publicHolidayOpening, String publicHolidayClosing) {
+
         this.carParkId = carParkId;
         this.weekdayOpening = weekdayOpening;
         this.weekdayClosing = weekdayClosing;
@@ -25,14 +25,16 @@ public class Timetable {
         this.publicHolidayClosing = publicHolidayClosing;
     }
 
-    public int getTimetableId() {
-        return timetableId;
+    public Timetable(String weekdayOpening, String weekdayClosing, String saturdayOpening, String saturdayClosing, String sundayOpening, String sundayClosing, String publicHolidayOpening, String publicHolidayClosing){
+        this.weekdayOpening = weekdayOpening;
+        this.weekdayClosing = weekdayClosing;
+        this.saturdayOpening = saturdayOpening;
+        this.saturdayClosing = saturdayClosing;
+        this.sundayOpening = sundayOpening;
+        this.sundayClosing = sundayClosing;
+        this.publicHolidayOpening = publicHolidayOpening;
+        this.publicHolidayClosing = publicHolidayClosing;
     }
-
-    public void setTimetableId(int timetableId) {
-        this.timetableId = timetableId;
-    }
-
     public int getCarParkId() {
         return carParkId;
     }

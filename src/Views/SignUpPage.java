@@ -1,4 +1,4 @@
-import javafx.application.Application;
+package Views;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -12,10 +12,21 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class SignUpPage extends Application {
+public class SignUpPage {
 
-    @Override
-    public void start(Stage stage) throws Exception {
+
+    static Stage parent;
+
+    public SignUpPage(Stage theParent) {
+
+        Stage stage = new Stage();
+        parent = theParent;
+        parent.hide();
+        start(stage);
+
+    }
+
+    public void start(Stage stage) {
         VBox rootPane = new VBox(10);
         VBox titlePane = new VBox();
         titlePane.setStyle("-fx-background-color: #4a86e8ff;");
@@ -37,10 +48,13 @@ public class SignUpPage extends Application {
         stage.show();
         stage.setResizable(false);
 
-        Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
+        Image imageArrow = new Image(getClass().getResourceAsStream("Resources/arrow.jpg"));
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setGraphic(new ImageView(imageArrow));
+        backButton.setOnAction((ActionEvent e) -> {
+            parent.show();
+        });
         picAndTitlePane.getChildren().add(backButton);
 
         Label titleLabel = new Label("Sign up");

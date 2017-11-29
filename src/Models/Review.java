@@ -1,5 +1,6 @@
 package Models;
 
+
 public class Review {
     private int membershipId;
     private int carParkId;
@@ -15,6 +16,11 @@ public class Review {
         this.outOfFive = outOfFive;
     }
 
+    public Review(String dateOfReview, String explanation, int outOfFive){
+        this.dateOfReview = dateOfReview;
+        this.explanation = explanation;
+        this.outOfFive = outOfFive;
+    }
     public int getMembershipId() {
         return membershipId;
     }

@@ -19,7 +19,7 @@ public class ReviewService {
 
                 if (results != null) {
                     result = new Review(
-                            results.getInt("DateOfReview"),
+                            results.getString("DateOfReview"),
                             results.getString("Explanation"),
                             results.getInt("OutOfFive")
                     );
@@ -30,6 +30,31 @@ public class ReviewService {
         }
 
         return result;
+    }
+
+    public static void save(Review itemToSave, DatabaseConnection database) {
+
+        Review existingItem = null;
+        if (itemToSave.getCarParkId() != 0) existingItem = selectById(itemToSave.getCarParkId(), database);
+
+        try {
+            if (existingItem == null) {
+                PreparedStatement statement = database.newStatement("INSERT INTO Membership (Explanation, DateOfReview, OutOfFive) VALUES (?, ?, ?))");
+                statement.setString(1, itemToSave.getExplanation());
+                statement.setString(2, itemToSave.getDateOfReview());
+                statement.setInt(3, itemToSave.getOutOfFive());
+                database.executeUpdate(statement);
+            }
+            else {
+                PreparedStatement statement = database.newStatement("UPDATE Table SET Explanation = ?, DateOfReview = ?, OutOfFive = ? WHERE CarParkID = ?");
+                statement.setString(1, itemToSave.getExplanation());
+                statement.setString(2, itemToSave.getDateOfReview());
+                statement.setInt(3, itemToSave.getOutOfFive());
+                database.executeUpdate(statement);
+            }
+        } catch (SQLException resultsException) {
+            System.out.println("Database saving error: " + resultsException.getMessage());
+        }
     }
 
 }

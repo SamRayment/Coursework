@@ -1,4 +1,5 @@
-import javafx.application.Application;
+package Views;
+
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -40,7 +41,7 @@ public class CreateReviewPage {
         HBox picAndTitlePane = new HBox(5);
 
 
-        Image imageArrow = new Image(getClass().getResourceAsStream("arrow.jpg"));
+        Image imageArrow = new Image(getClass().getResourceAsStream("Resources/arrow.jpg"));
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setOnAction((ActionEvent e) -> {
@@ -61,8 +62,8 @@ public class CreateReviewPage {
 
         HBox reviewStarPane = new HBox(10);
 
-        Image greyStar = new Image(getClass().getResourceAsStream("star.jpg"));
-        Image yellowStar = new Image(getClass().getResourceAsStream("YellowStar.jpg"));
+        Image greyStar = new Image(getClass().getResourceAsStream("Resources/star.jpg"));
+        Image yellowStar = new Image(getClass().getResourceAsStream("Resources/YellowStar.jpg"));
         Button firstStar = new Button();
         firstStar.setGraphic(new ImageView(greyStar));
         firstStar.setOnAction((ActionEvent e) -> {

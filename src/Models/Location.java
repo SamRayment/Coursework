@@ -5,13 +5,12 @@ public class Location {
     private int carParkId;
     private String street;
     private String town;
-    private String postcode;
     private boolean cctv;
     private boolean electricParking;
     private boolean disabledParking;
     private boolean childParking;
 
-    public Location(boolean cctv, boolean electricParking, boolean disabledParking, boolean childParking, int locationId, int carParkId, String street, String town, String postcode) {
+    public Location(boolean cctv, boolean electricParking, boolean disabledParking, boolean childParking, int locationId, int carParkId) {
         this.cctv = cctv;
         this.electricParking = electricParking;
         this.disabledParking = disabledParking;
@@ -20,17 +19,10 @@ public class Location {
         this.carParkId = carParkId;
         this.street = street;
         this.town = town;
-        this.postcode = postcode;
     }
 
     public Location(int carParkId){
         this.carParkId = carParkId;
-    }
-
-    public Location(String street, String town, String postcode){
-        this.street = street;
-        this.town = town;
-        this.postcode = postcode;
     }
 
     public int getLocationId() {
@@ -65,14 +57,6 @@ public class Location {
         this.town = town;
     }
 
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
     public boolean isCctv() {
         return cctv;
     }
@@ -104,13 +88,4 @@ public class Location {
     public void setChildParking(boolean childParking) {
         this.childParking = childParking;
     }
-
-    @Override
-    public String toString() {
-        return "Location{" +
-                "street='" + street + '\'' +
-                ", town='" + town + '\'' +
-                ", postcode='" + postcode + '\'' +
-                '}';
     }
-}

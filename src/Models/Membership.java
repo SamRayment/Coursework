@@ -11,6 +11,10 @@ public class Membership {
         this.password = password;
     }
 
+    public Membership(int membershipId){
+        this.membershipId = membershipId;
+    }
+
     public int getMembershipId() {
         return membershipId;
     }
