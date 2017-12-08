@@ -1,5 +1,6 @@
 package Views;
 
+import Controller.SignUpPageController;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,6 +26,8 @@ public class SignUpPage {
         start(stage);
 
     }
+    public static TextField createUsernameTextfield;
+    public static PasswordField createPasswordfield;
 
     public void start(Stage stage) {
         VBox rootPane = new VBox(10);
@@ -48,7 +51,7 @@ public class SignUpPage {
         stage.show();
         stage.setResizable(false);
 
-        Image imageArrow = new Image(getClass().getResourceAsStream("Resources/arrow.jpg"));
+        Image imageArrow = new Image("Resources/arrow.jpg");
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setGraphic(new ImageView(imageArrow));
@@ -67,31 +70,24 @@ public class SignUpPage {
         Label title = new Label("Please create a username and password");
         title.setFont(new Font("Arial", 11.5));
 
-        TextField usernameTextfield = new TextField();
-        usernameTextfield.setPromptText("Please enter username");
-        usernameTextfield.setPrefWidth(100);
-        PasswordField passwordfield = new PasswordField();
-        passwordfield.setPromptText("Please enter password");
+        createUsernameTextfield.setPromptText("Please enter username");
+        createUsernameTextfield.setPrefWidth(100);
+        createPasswordfield.setPromptText("Please enter password");
 
 
 
         Button searchButton = new Button("Enter");
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
-        searchButton.setOnAction((ActionEvent ae) -> openNewStage(stage));
+        searchButton.setOnAction((ActionEvent ae) -> SignUpPageController.openNewStage(stage));
 
         titlePane.getChildren().add(picAndTitlePane);
         rootPane.getChildren().add(titlePane);
         loginPane.getChildren().add(title);
-        loginPane.getChildren().add(usernameTextfield);
-        loginPane.getChildren().add(passwordfield);
+        loginPane.getChildren().add(createUsernameTextfield);
+        loginPane.getChildren().add(createPasswordfield);
         loginPane.getChildren().add(searchButton);
         rootPane.getChildren().add(loginPane);
     }
-
-    public static void openNewStage(Stage parent) {
-        LoginPage newStage = new LoginPage(parent);
-    }
-
 }
 
 

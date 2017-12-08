@@ -43,7 +43,7 @@ public class SearchResults {
         HBox picAndTitlePane = new HBox(5);
 
 
-        Image imageArrow = new Image(getClass().getResourceAsStream("Resources/arrow.jpg"));
+        Image imageArrow = new Image("Resources/arrow.jpg");
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setOnAction((ActionEvent e) -> {

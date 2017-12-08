@@ -1,10 +1,9 @@
 package Controller;
 
-import Models.Location;
-import Views.SearchPage;
 import Views.SearchResults;
 import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
+
 
 import static Views.SearchPage.requirementsCheckboxes;
 import static Views.SearchPage.townCitySelector;
@@ -12,12 +11,9 @@ import static Views.SearchPage.townCitySelector;
 public class SearchPageController{
 
 
-
     public static void selectedLocation(){
 
-        Location town = null;
-
-        System.out.println(townCitySelector.getValue().toString());
+       System.out.println(townCitySelector.getValue());
 
         for (CheckBox c : requirementsCheckboxes) {
             if (c.isSelected()) {

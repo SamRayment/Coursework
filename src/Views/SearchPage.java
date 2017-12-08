@@ -1,29 +1,36 @@
 package Views;
 
 import Controller.SearchPageController;
+import Models.DatabaseConnection;
+import Models.TownCounty;
+import Models.TownCountyService;
 import javafx.application.Application;
-
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-
+import java.util.ArrayList;
 
 
 public class SearchPage extends Application {
 
+    public static DatabaseConnection database;
     public static CheckBox[] requirementsCheckboxes;
-    public static ChoiceBox townCitySelector;
+    public static ChoiceBox<TownCounty> townCitySelector;
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        database = new DatabaseConnection("Coursework.db");
 
 
         VBox rootPane = new VBox(10);
@@ -42,8 +49,10 @@ public class SearchPage extends Application {
 
         Label searchLabel = new Label("Please select a town/city");
 
-        townCitySelector = new ChoiceBox(FXCollections.observableArrayList(
-                "This will include the towns"));
+        ArrayList<TownCounty> townList = new ArrayList<>();
+        TownCountyService.selectAll(townList, database);
+        townCitySelector = new ChoiceBox<>();
+        townCitySelector.setItems(FXCollections.observableArrayList(townList));
 
         VBox checkBoxBox = new VBox(5);
         checkBoxBox.setPadding(new Insets(10));
@@ -65,9 +74,12 @@ public class SearchPage extends Application {
         rootPane.getChildren().add(townCitySelector);
         rootPane.getChildren().add(checkBoxBox);
         rootPane.getChildren().add(searchButton);
+
+
+
     }
-
-
-
 }
+
+
+
 

@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MembershipService {
-    public static Membership selectById(int id, DatabaseConnection database) {
+    public static Membership selectMemberById(int id, DatabaseConnection database) {
 
         Membership result = null;
 
@@ -29,10 +29,10 @@ public class MembershipService {
         return result;
     }
 
-    public static void save(Membership itemToSave, DatabaseConnection database) {
+    public static void addNewMember(Membership itemToSave, DatabaseConnection database) {
 
         Membership existingItem = null;
-        if (itemToSave.getMembershipId() != 0) existingItem = selectById(itemToSave.getMembershipId(), database);
+        if (itemToSave.getMembershipId() != 0) existingItem = selectMemberById(itemToSave.getMembershipId(), database);
 
         try {
             if (existingItem == null) {

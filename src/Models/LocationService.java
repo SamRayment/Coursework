@@ -5,16 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LocationService {
-    public static Location selectToLocate(int id, DatabaseConnection database) {
+    public static Location selectToLocate(DatabaseConnection database) {
 
         Location result = null;
 
-        PreparedStatement statement = database.newStatement("SELECT CarParkID,  FROM Locations WHERE Town = ? AND CCTV = ? AND ElectricParking = ? AND DisabledParking = ? AND ChildParking = ?");
+        PreparedStatement statement = database.newStatement("SELECT CarParkID  FROM Location WHERE Town = ? AND CCTV = ? AND ElectricParking = ? AND DisabledParking = ? AND ChildParking = ?");
 
         try {
             if (statement != null) {
-
-                statement.setInt(1, id);
                 ResultSet results = database.executeQuery(statement);
 
                 if (results != null) {

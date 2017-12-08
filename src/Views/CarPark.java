@@ -42,7 +42,7 @@ public class CarPark {
 
         titlePane.setStyle("-fx-background-color: #4a86e8ff;");
 
-        Image imageArrow = new Image(getClass().getResourceAsStream("Resources/arrow.jpg"));
+        Image imageArrow = new Image("Resources/arrow.jpg");
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setOnAction((ActionEvent e) -> returnStage(stage));

@@ -1,24 +1,23 @@
 package Models;
 
 public class TownCounty {
-    private String street;
+    private int id;
     private String town;
     private String county;
-    private String postcode;
 
-    public TownCounty(String street, String town, String county, String postcode) {
-        this.street = street;
+    public TownCounty(int id, String town, String county) {
+        this.id = id;
         this.town = town;
         this.county = county;
-        this.postcode = postcode;
+
     }
 
-    public String getStreet() {
-        return street;
+    public int getId() {
+        return id;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTown() {
@@ -37,21 +36,9 @@ public class TownCounty {
         this.county = county;
     }
 
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
     @Override
     public String toString() {
-        return "TownCounty{" +
-                "street='" + street + '\'' +
-                ", town='" + town + '\'' +
-                ", county='" + county + '\'' +
-                ", postcode='" + postcode + '\'' +
-                '}';
+        return town;
     }
 }
+

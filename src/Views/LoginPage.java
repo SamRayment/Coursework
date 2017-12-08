@@ -17,12 +17,14 @@ public class LoginPage {
 
     public LoginPage(Stage theParent) {
 
-        Stage stage = new Stage();
+        Stage loginStage = new Stage();
         parent = theParent;
         parent.hide();
-        start(stage);
+        start(loginStage);
 
     }
+    public static TextField usernameTextfield;
+    public static PasswordField passwordfield;
 
     public void start(Stage stage) {
         VBox rootPane = new VBox(10);
@@ -48,7 +50,7 @@ public class LoginPage {
         stage.show();
         stage.setResizable(false);
 
-        Image imageArrow = new Image(getClass().getResourceAsStream("Resources/arrow.jpg"));
+        Image imageArrow = new Image("Resources/arrow.jpg");
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setOnAction((ActionEvent e) -> returnStage(stage));
@@ -63,10 +65,9 @@ public class LoginPage {
         Label title = new Label("Please sign in to enter review");
         title.setFont(new Font("Arial", 14));
 
-        TextField usernameTextfield = new TextField();
+
         usernameTextfield.setPrefWidth(100);
         usernameTextfield.setPromptText("Please enter username");
-        PasswordField passwordfield = new PasswordField();
         passwordfield.setPromptText("Please enter password");
 
 

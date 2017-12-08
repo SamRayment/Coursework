@@ -4,20 +4,18 @@ package Models;
 public class Review {
     private int membershipId;
     private int carParkId;
-    private String dateOfReview;
+
     private String explanation;
     private int outOfFive;
 
-    public Review(int membershipId, int carParkId, String dateOfReview, String explanation, int outOfFive) {
+    public Review(int membershipId, int carParkId, String explanation, int outOfFive) {
         this.membershipId = membershipId;
         this.carParkId = carParkId;
-        this.dateOfReview = dateOfReview;
         this.explanation = explanation;
         this.outOfFive = outOfFive;
     }
 
-    public Review(String dateOfReview, String explanation, int outOfFive){
-        this.dateOfReview = dateOfReview;
+    public Review(String explanation, int outOfFive){
         this.explanation = explanation;
         this.outOfFive = outOfFive;
     }
@@ -35,14 +33,6 @@ public class Review {
 
     public void setCarParkId(int carParkId) {
         this.carParkId = carParkId;
-    }
-
-    public String getDateOfReview() {
-        return dateOfReview;
-    }
-
-    public void setDateOfReview(String dateOfReview) {
-        this.dateOfReview = dateOfReview;
     }
 
     public String getExplanation() {
@@ -66,7 +56,6 @@ public class Review {
         return "Reviews{" +
                 "membershipId=" + membershipId +
                 ", carParkId=" + carParkId +
-                ", dateOfReview='" + dateOfReview + '\'' +
                 ", explanation='" + explanation + '\'' +
                 ", outOfFive=" + outOfFive +
                 '}';

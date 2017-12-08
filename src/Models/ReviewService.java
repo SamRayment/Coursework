@@ -9,7 +9,7 @@ public class ReviewService {
 
         Review result = null;
 
-            PreparedStatement statement = database.newStatement("SELECT DateOfReview, Explanation, OutOfFive FROM Reviews WHERE CarParkID = ? AND MembershipID = ?");
+            PreparedStatement statement = database.newStatement("SELECT Explanation, OutOfFive FROM Reviews WHERE CarParkID = ? AND MembershipID = ?");
 
         try {
             if (statement != null) {
@@ -19,7 +19,6 @@ public class ReviewService {
 
                 if (results != null) {
                     result = new Review(
-                            results.getString("DateOfReview"),
                             results.getString("Explanation"),
                             results.getInt("OutOfFive")
                     );
@@ -41,14 +40,12 @@ public class ReviewService {
             if (existingItem == null) {
                 PreparedStatement statement = database.newStatement("INSERT INTO Membership (Explanation, DateOfReview, OutOfFive) VALUES (?, ?, ?))");
                 statement.setString(1, itemToSave.getExplanation());
-                statement.setString(2, itemToSave.getDateOfReview());
                 statement.setInt(3, itemToSave.getOutOfFive());
                 database.executeUpdate(statement);
             }
             else {
                 PreparedStatement statement = database.newStatement("UPDATE Table SET Explanation = ?, DateOfReview = ?, OutOfFive = ? WHERE CarParkID = ?");
                 statement.setString(1, itemToSave.getExplanation());
-                statement.setString(2, itemToSave.getDateOfReview());
                 statement.setInt(3, itemToSave.getOutOfFive());
                 database.executeUpdate(statement);
             }
