@@ -1,44 +1,34 @@
 package Models;
 
 public class Location {
-    private int locationId;
-    private int carParkId;
+    private int postcodeId;
     private String street;
-    private String town;
+    private int townCountyId;
+    private String postcode;
+    private int carParkId;
     private boolean cctv;
     private boolean electricParking;
     private boolean disabledParking;
     private boolean childParking;
 
-    public Location(boolean cctv, boolean electricParking, boolean disabledParking, boolean childParking, int locationId, int carParkId) {
+    public Location(int postcodeId, String street, int townCountyId, String postcode, int carParkId, boolean cctv, boolean electricParking, boolean disabledParking, boolean childParking) {
+        this.postcodeId = postcodeId;
+        this.street = street;
+        this.townCountyId = townCountyId;
+        this.postcode = postcode;
+        this.carParkId = carParkId;
         this.cctv = cctv;
         this.electricParking = electricParking;
         this.disabledParking = disabledParking;
         this.childParking = childParking;
-        this.locationId = locationId;
-        this.carParkId = carParkId;
-        this.street = street;
-        this.town = town;
     }
 
-    public Location(int carParkId){
-        this.carParkId = carParkId;
+    public int getPostcodeId() {
+        return postcodeId;
     }
 
-    public int getLocationId() {
-        return locationId;
-    }
-
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
-    }
-
-    public int getCarParkId() {
-        return carParkId;
-    }
-
-    public void setCarParkId(int carParkId) {
-        this.carParkId = carParkId;
+    public void setPostcodeId(int postcodeId) {
+        this.postcodeId = postcodeId;
     }
 
     public String getStreet() {
@@ -49,12 +39,28 @@ public class Location {
         this.street = street;
     }
 
-    public String getTown() {
-        return town;
+    public int getTownCountyId() {
+        return townCountyId;
     }
 
-    public void setTown(String town) {
-        this.town = town;
+    public void setTownCountyId(int townCountyId) {
+        this.townCountyId = townCountyId;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public int getCarParkId() {
+        return carParkId;
+    }
+
+    public void setCarParkId(int carParkId) {
+        this.carParkId = carParkId;
     }
 
     public boolean isCctv() {
@@ -88,4 +94,20 @@ public class Location {
     public void setChildParking(boolean childParking) {
         this.childParking = childParking;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "postcodeId=" + postcodeId +
+                ", street='" + street + '\'' +
+                ", townCountyId=" + townCountyId +
+                ", postcode='" + postcode + '\'' +
+                ", carParkId=" + carParkId +
+                ", cctv=" + cctv +
+                ", electricParking=" + electricParking +
+                ", disabledParking=" + disabledParking +
+                ", childParking=" + childParking +
+                '}';
     }
+}
+

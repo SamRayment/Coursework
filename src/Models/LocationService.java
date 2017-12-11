@@ -9,7 +9,7 @@ public class LocationService {
 
         Location result = null;
 
-        PreparedStatement statement = database.newStatement("SELECT CarParkID  FROM Location WHERE Town = ? AND CCTV = ? AND ElectricParking = ? AND DisabledParking = ? AND ChildParking = ?");
+        PreparedStatement statement = database.newStatement("SELECT CarParkID  FROM Locations WHERE TownCountyID = (SELECT TownCountyID FROM TownCounty WHERE Town = ?) AND CCTV = ? AND ElectricParking = ? AND DisabledParking = ? AND ChildParking = ?");
 
         try {
             if (statement != null) {
@@ -17,7 +17,16 @@ public class LocationService {
 
                 if (results != null) {
                     result = new Location(
-                            results.getInt("CarParkID"));
+                            results.getInt("PostcodeID"),
+                            results.getString("Street"),
+                            results.getInt("TownCountyID"),
+                            results.getString("Postcode"),
+                            results.getInt("CarParkID"),
+                            results.getBoolean("CCTV"),
+                            results.getBoolean("ElectricParking"),
+                            results.getBoolean("DisabledParking"),
+                            results.getBoolean("ChildParking"));
+
                 }
             }
         } catch (SQLException resultsException) {
