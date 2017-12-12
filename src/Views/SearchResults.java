@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+import static Controller.SearchPageController.requirementsSelected;
+import static Controller.SearchPageController.townSelected;
+
 
 public class SearchResults {
 
@@ -95,7 +98,11 @@ public class SearchResults {
             rightHandSide.getChildren().add(label);
 
             ArrayList<Location> carParkList = new ArrayList<>();
-            LocationService.selectToLocate(database);
+            LocationService.selectToLocate(townSelected,
+                    requirementsSelected.get("CCTV"),
+                    requirementsSelected.get("Electric Charging"),
+                    requirementsSelected.get("Disabled Parking"),
+                    requirementsSelected.get("Child Parking"), database);
 
             Hyperlink link = new Hyperlink();
             link.setText("Go to result number " + carParkList);
@@ -113,11 +120,6 @@ public class SearchResults {
             resultBox.getChildren().add(rightHandSide);
             searchPane.getChildren().add(resultBox);
         }
-
-        ArrayList<Location> carParkList = new ArrayList<>();
-        LocationService.selectToLocate(database);
-
-
         rootPane.getChildren().add(titlePane);
         searchScrollPane.setContent(searchPane);
         rootPane.getChildren().add(searchScrollPane);

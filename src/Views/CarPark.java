@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -69,6 +70,7 @@ public class CarPark {
 
         titlePane.getChildren().add(picAndTitlePane);
 
+        ScrollPane scrollPane = new ScrollPane();
 
         VBox addressPane = new VBox();
         Label roadExample = new Label("(Road)");
@@ -194,6 +196,7 @@ public class CarPark {
         rootPane.getChildren().add(additionalInfoPane);
         rootPane.getChildren().add(timesPane);
         rootPane.getChildren().add(costsPane);
+        scrollPane.setContent(rootPane);
 
     }
     public static void openNewStage(Stage parent) {
