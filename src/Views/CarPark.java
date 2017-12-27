@@ -123,43 +123,11 @@ public class CarPark {
         timesPane.getChildren().add(publicHolidaysPane);
 
         VBox costsPane = new VBox();
-        Label costsLabel = new Label("Costs:");
-        costsLabel.setFont(new Font(15));
-        HBox oneHourPane = new HBox();
-        Label oneHourLabel = new Label ("Up to 1 Hour:");
-        Label oneHourExample = new Label ("(Cost)");
-        oneHourPane.getChildren().add(oneHourLabel);
-        oneHourPane.getChildren().add(oneHourExample);
-
-        HBox twoHoursPane = new HBox();
-        Label twoHourLabel = new Label ("Up to 2 Hours:");
-        Label twoHourExample = new Label ("(Cost)");
-        twoHoursPane.getChildren().add(twoHourLabel);
-        twoHoursPane.getChildren().add(twoHourExample);
-
-        HBox threeHoursPane = new HBox();
-        Label threeHoursLabel = new Label ("Up to 3 Hours:");
-        Label threeHoursExample = new Label ("(Costs)");
-        threeHoursPane.getChildren().add(threeHoursLabel);
-        threeHoursPane.getChildren().add(threeHoursExample);
-
-        HBox fourHoursPane = new HBox();
-        Label fourHoursLabel = new Label ("Up to 4 Hours:");
-        Label fourHoursExample = new Label ("(Cost)");
-        fourHoursPane.getChildren().add(fourHoursLabel);
-        fourHoursPane.getChildren().add(fourHoursExample);
-
-        HBox fiveHoursPane = new HBox();
-        Label fiveHoursLabel = new Label ("Up to 5 Hours:");
-        Label fiveHoursExample = new Label ("(Cost)");
-        fiveHoursPane.getChildren().add(fiveHoursLabel);
-        fiveHoursPane.getChildren().add(fiveHoursExample);
-
-        HBox overFiveHoursPane = new HBox();
-        Label overFiveHoursLabel = new Label ("Over 5 Hours:");
-        Label overFiveHoursExample = new Label ("(Cost)");
-        overFiveHoursPane.getChildren().add(overFiveHoursLabel);
-        fiveHoursPane.getChildren().add(overFiveHoursExample);
+        Label costsLabel = new Label("Cost hour:");
+        HBox  perHourPane = new HBox();
+        Label costExample = new Label ("(Cost)");
+        perHourPane.getChildren().add(costsLabel);
+        perHourPane.getChildren().add(costExample);
 
         HBox lostTicketPane = new HBox();
         Label  lostTicketLabel= new Label ("Lost ticket:");
@@ -167,13 +135,7 @@ public class CarPark {
         lostTicketPane.getChildren().add(lostTicketLabel);
         lostTicketPane.getChildren().add(lostTicketExample);
 
-        costsPane.getChildren().add(costsLabel);
-        costsPane.getChildren().add(oneHourPane);
-        costsPane.getChildren().add(twoHoursPane);
-        costsPane.getChildren().add(threeHoursPane);
-        costsPane.getChildren().add(fourHoursPane);
-        costsPane.getChildren().add(fiveHoursPane);
-        costsPane.getChildren().add(overFiveHoursPane);
+        costsPane.getChildren().add(perHourPane);
         costsPane.getChildren().add(lostTicketPane);
 
         reviewPane.setPadding(new Insets(0, 0,0,10));
