@@ -1,9 +1,8 @@
 package Views;
 
 import Controller.SearchPageController;
-import Models.DatabaseConnection;
-import Models.TownCounty;
-import Models.TownCountyService;
+import Models.*;
+import Models.CarPark;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -18,7 +17,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.Console;
 import java.util.ArrayList;
+
+import static Controller.SearchPageController.requirementsSelected;
+import static Controller.SearchPageController.townSelected;
 
 
 public class SearchPage extends Application {
@@ -68,6 +71,32 @@ public class SearchPage extends Application {
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px;");
 
         searchButton.setOnAction((ActionEvent ae) -> SearchPageController.openNewStage(stage));
+
+        ArrayList<TownCounty> testList = new ArrayList<>();
+        TownCountyService.selectAll(testList, database);
+        for (TownCounty c: testList) {
+            System.out.println(c);
+        }
+        int carParkTestId = 3;
+
+        ArrayList<CarPark> carParkTest = new ArrayList<>();
+        CarParkService.selectById(carParkTestId, database);
+        for (CarPark c: carParkTest) {
+            System.out.println(c);
+        }
+
+        String usernameTest = "JoeBloggs";
+        String passwordTest = "CF97BE4E7084700EE3B00CE7504C7AA5";
+        MembershipService.selectMemberById(usernameTest, passwordTest, database);
+
+        int carParkId = 8;
+        int MembershipId = 5;
+        ReviewService.selectById(carParkId, MembershipId, database);
+
+        TimetableService.selectById(carParkId, database);
+
+
+
 
         rootPane.getChildren().add(title);
         rootPane.getChildren().add(searchLabel);

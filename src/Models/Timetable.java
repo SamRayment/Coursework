@@ -109,15 +109,6 @@ public class Timetable {
 
     @Override
     public String toString() {
-        return "Timetables{" +
-                "weekdayOpening='" + weekdayOpening + '\'' +
-                ", weekdayClosing='" + weekdayClosing + '\'' +
-                ", saturdayOpening='" + saturdayOpening + '\'' +
-                ", saturdayClosing='" + saturdayClosing + '\'' +
-                ", sundayOpening='" + sundayOpening + '\'' +
-                ", sundayClosing='" + sundayClosing + '\'' +
-                ", publicHolidayOpening='" + publicHolidayOpening + '\'' +
-                ", publicHolidayClosing='" + publicHolidayClosing + '\'' +
-                '}';
+        return weekdayOpening;
     }
 }

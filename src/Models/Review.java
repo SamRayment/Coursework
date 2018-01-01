@@ -53,11 +53,6 @@ public class Review {
 
     @Override
     public String toString() {
-        return "Reviews{" +
-                "membershipId=" + membershipId +
-                ", carParkId=" + carParkId +
-                ", explanation='" + explanation + '\'' +
-                ", outOfFive=" + outOfFive +
-                '}';
+        return  explanation;
     }
 }

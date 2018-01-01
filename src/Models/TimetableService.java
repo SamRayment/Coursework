@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class TimetableService {
 
-        public static Timetable selectById(int id, DatabaseConnection database) {
+        public static Timetable selectById(int carParkId, DatabaseConnection database) {
 
             Timetable result = null;
 
@@ -15,7 +15,7 @@ public class TimetableService {
             try {
                 if (statement != null) {
 
-                    statement.setInt(1, id);
+                    statement.setInt(1, carParkId);
                     ResultSet results = database.executeQuery(statement);
 
                     if (results != null) {
@@ -29,6 +29,7 @@ public class TimetableService {
                                 results.getString("PublicHolidayOpening"),
                                 results.getString("PublicHolidayClosing")
                         );
+                        System.out.println("Result found: "+ result);
                     }
                 }
             } catch (SQLException resultsException) {

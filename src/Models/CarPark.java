@@ -8,8 +8,10 @@ public class CarPark {
     private int lostTicket;
     private boolean cardPayment;
     private String phonePayment;
+    private int averageOutOfFive;
+    private String problems;
 
-    public CarPark(int carParkId, String carParkName, int noOfSpaces, int costPerHour, int lostTicket, boolean cardPayment, String phonePayment) {
+    public CarPark(int carParkId, String carParkName, int noOfSpaces, int costPerHour, int lostTicket, boolean cardPayment, String phonePayment, int averageOutOfFive, String problems) {
         this.carParkId = carParkId;
         this.carParkName = carParkName;
         this.noOfSpaces = noOfSpaces;
@@ -17,16 +19,10 @@ public class CarPark {
         this.lostTicket = lostTicket;
         this.cardPayment = cardPayment;
         this.phonePayment = phonePayment;
+        this.averageOutOfFive = averageOutOfFive;
+        this.problems = problems;
     }
 
-    public CarPark(String carParkName, int noOfSpaces, int costPerHour, int lostTicket, boolean cardPayment, String phonePayment) {
-        this.carParkName = carParkName;
-        this.noOfSpaces = noOfSpaces;
-        this.costPerHour = costPerHour;
-        this.lostTicket = lostTicket;
-        this.cardPayment = cardPayment;
-        this.phonePayment = phonePayment;
-    }
     public int getCarParkId() {
         return carParkId;
     }
@@ -83,11 +79,24 @@ public class CarPark {
         this.phonePayment = phonePayment;
     }
 
+    public int getAverageOutOfFive() {
+        return averageOutOfFive;
+    }
+
+    public void setAverageOutOfFive(int averageOutOfFive) {
+        this.averageOutOfFive = averageOutOfFive;
+    }
+
+    public String getProblems() {
+        return problems;
+    }
+
+    public void setProblems(String problems) {
+        this.problems = problems;
+    }
+
     @Override
     public String toString() {
-        return "CarParks{" +
-                "carParkName='" + carParkName + '\'' +
-                ", phonePayment='" + phonePayment + '\'' +
-                '}';
+        return carParkName;
     }
 }

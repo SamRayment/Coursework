@@ -97,17 +97,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" +
-                "postcodeId=" + postcodeId +
-                ", street='" + street + '\'' +
-                ", townCountyId=" + townCountyId +
-                ", postcode='" + postcode + '\'' +
-                ", carParkId=" + carParkId +
-                ", cctv=" + cctv +
-                ", electricParking=" + electricParking +
-                ", disabledParking=" + disabledParking +
-                ", childParking=" + childParking +
-                '}';
+        return String.valueOf(carParkId);
     }
 }
 

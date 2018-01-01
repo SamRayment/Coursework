@@ -147,7 +147,7 @@ public class CarPark {
         timesPane.setPadding(new Insets(0, 0,0,10));
         costsPane.setPadding(new Insets(0, 0,0,10));
 
-        
+
         rootPane.getChildren().add(titlePane);
         rootPane.getChildren().add(reviewPane);
         rootPane.getChildren().add(picPane);

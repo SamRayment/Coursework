@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static Controller.SearchPageController.townSelected;
 
 public class LocationService {
+    public static ResultSet results;
+
     public static Location selectToLocate(String town,
                                           boolean cctv,
                                           boolean electricParking,
@@ -38,7 +39,7 @@ public class LocationService {
 
 
 
-                ResultSet results = database.executeQuery(statement);
+                 results = database.executeQuery(statement);
 
                 if (results != null) {
 
