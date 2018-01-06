@@ -65,14 +65,14 @@ public class AllReviews {
         Pane searchPane = new Pane();
         Hyperlink link = new Hyperlink();
         link.setText("Create Review");
-        link.setOnAction((ActionEvent e) -> openNewStage(stage));
+        link.setOnAction((ActionEvent e) -> LoginOpen(stage));
         searchPane.getChildren().add(link);
 
 
         rootPane.getChildren().add(titlePane);
         rootPane.getChildren().add(searchPane);
     }
-    public static void openNewStage(Stage parent) {
+    public static void LoginOpen(Stage parent) {
         LoginPage newStage = new LoginPage(parent);
     }
 }

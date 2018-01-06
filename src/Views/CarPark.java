@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 
 public class CarPark {
 
+    public static String carParkTitle;
+
     static Stage parent;
 
     public CarPark(Stage theParent) {
@@ -49,7 +51,7 @@ public class CarPark {
         backButton.setOnAction((ActionEvent e) -> returnStage(stage));
         picAndTitlePane.getChildren().add(backButton);
 
-        Label titleExample = new Label("(Title would be here)");
+        Label titleExample = new Label(carParkTitle);
         titleExample.setStyle("-fx-text-fill: white;");
         titleExample.setFont(new Font( 18));
         picAndTitlePane.getChildren().add(titleExample);

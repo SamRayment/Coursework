@@ -83,7 +83,7 @@ public class SearchResults {
 
         Image starImage =  new Image("Resources/YellowStar.jpg");
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             HBox resultBox = new HBox();
 
             Rectangle colouredThing = new Rectangle();

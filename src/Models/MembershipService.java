@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MembershipService {
-    public static Membership selectMemberById(String usernameTest, String passwordTest, DatabaseConnection database) {
+    public static Membership selectMemberById(String usernameAsString, String hashedPassword, DatabaseConnection database) {
 
         Membership result = null;
 
@@ -14,8 +14,8 @@ public class MembershipService {
         try {
             if (statement != null) {
 
-                statement.setString(1, usernameTest);
-                statement.setString(2, passwordTest);
+                statement.setString(1, usernameAsString);
+                statement.setString(2, hashedPassword);
                 ResultSet results = database.executeQuery(statement);
 
                 if (results != null) {

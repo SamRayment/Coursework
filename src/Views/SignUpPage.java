@@ -26,8 +26,6 @@ public class SignUpPage {
         start(stage);
 
     }
-    public static TextField createUsernameTextfield;
-    public static PasswordField createPasswordfield;
 
     public void start(Stage stage) {
         VBox rootPane = new VBox(10);
@@ -68,7 +66,10 @@ public class SignUpPage {
 
 
         Label title = new Label("Please create a username and password");
-        title.setFont(new Font("Arial", 11.5));
+        title.setFont(new Font("Arial", 10));
+
+        TextField createUsernameTextfield = new TextField();
+        PasswordField createPasswordfield = new PasswordField();
 
         createUsernameTextfield.setPromptText("Please enter username");
         createUsernameTextfield.setPrefWidth(100);
@@ -78,7 +79,7 @@ public class SignUpPage {
 
         Button searchButton = new Button("Enter");
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
-        searchButton.setOnAction((ActionEvent ae) -> SignUpPageController.openNewStage(stage));
+        searchButton.setOnAction((ActionEvent ae) -> SignUpPageController.turnToHash(createUsernameTextfield, createPasswordfield));
 
         titlePane.getChildren().add(picAndTitlePane);
         rootPane.getChildren().add(titlePane);

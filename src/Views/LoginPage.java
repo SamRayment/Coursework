@@ -1,6 +1,7 @@
 package Views;
 
 
+import Controller.LoginPageController;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,18 +17,17 @@ import javafx.stage.Stage;
 
 
 public class LoginPage {
+
     static Stage parent;
 
     public LoginPage(Stage theParent) {
 
-        Stage loginStage = new Stage();
+        Stage stage = new Stage();
         parent = theParent;
         parent.hide();
-        start(loginStage);
+        start(stage);
 
     }
-    public static TextField usernameTextfield;
-    public static PasswordField passwordfield;
 
     public void start(Stage stage) {
         VBox rootPane = new VBox(10);
@@ -68,7 +68,8 @@ public class LoginPage {
         Label title = new Label("Please sign in to enter review");
         title.setFont(new Font("Arial", 14));
 
-
+        TextField usernameTextfield = new TextField();
+        PasswordField passwordfield = new PasswordField();
         usernameTextfield.setPrefWidth(100);
         usernameTextfield.setPromptText("Please enter username");
         passwordfield.setPromptText("Please enter password");
@@ -76,7 +77,7 @@ public class LoginPage {
 
         Button searchButton = new Button("Login");
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
-        searchButton.setOnAction((ActionEvent ae) -> openNewStage(stage));
+        searchButton.setOnAction((ActionEvent ae) -> LoginPageController.turnToHash(usernameTextfield, passwordfield));
 
         Hyperlink link = new Hyperlink();
         link.setText("Click here to sign up");
