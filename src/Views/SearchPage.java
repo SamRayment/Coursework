@@ -76,27 +76,6 @@ public class SearchPage extends Application {
         TownCountyService.selectAll(testList, database);
         for (TownCounty c: testList) {
             System.out.println(c);
-        }
-        int carParkTestId = 3;
-
-        ArrayList<CarPark> carParkTest = new ArrayList<>();
-        CarParkService.selectById(carParkTestId, database);
-        for (CarPark c: carParkTest) {
-            System.out.println(c);
-        }
-
-        String usernameTest = "JoeBloggs";
-        String passwordTest = "CF97BE4E7084700EE3B00CE7504C7AA5";
-        MembershipService.selectMemberById(usernameTest, passwordTest, database);
-
-        int carParkId = 8;
-        int MembershipId = 5;
-        ReviewService.selectById(carParkId, MembershipId, database);
-
-        TimetableService.selectById(carParkId, database);
-
-
-
 
         rootPane.getChildren().add(title);
         rootPane.getChildren().add(searchLabel);

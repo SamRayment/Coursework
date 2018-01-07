@@ -1,10 +1,12 @@
 package Models;
 
+import javax.xml.crypto.Data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MembershipService {
+    public static DatabaseConnection database;
     public static Membership selectMemberById(String usernameAsString, String hashedPassword, DatabaseConnection database) {
 
         Membership result = null;
@@ -31,28 +33,27 @@ public class MembershipService {
         return result;
     }
 
-    public static void addNewMember(Membership itemToSave, DatabaseConnection database) {
+    public static void addNewMember(Review itemToSave, DatabaseConnection database) {
 
-        // Membership existingItem = null;
-        // if (itemToSave.getMembershipId() != 0) existingItem = selectMemberById(itemToSave.getMembershipId(), database);
-//
-        //  try {
-        //         if (existingItem == null) {
-        //        PreparedStatement statement = database.newStatement("INSERT INTO Membership (Username, Password) VALUES (?, ?))");
-        //          statement.setString(1, itemToSave.getUsername());
-        //      statement.setString(2, itemToSave.getPassword());
-        //   database.executeUpdate(statement);
-        //}
-        // else {
-        //   PreparedStatement statement = database.newStatement("UPDATE Table SET Username = ?, Password = ? WHERE MembershipID = ?");
-        // statement.setString(1, itemToSave.getUsername());
-        //statement.setString(2, itemToSave.getPassword());
-        //statement.setInt(4, itemToSave.getMembershipId());
-        //database.executeUpdate(statement);
-        // }
-        //} catch (SQLException resultsException) {
-        //   System.out.println("Database saving error: " + resultsException.getMessage());
-        //}
-        //}
+        Membership existingItem = null;
+        if (itemToSave.getCarParkId() != 0) existingItem = selectMemberById(itemToSave.getMembershipId(), database);
+
+        try {
+                if (existingItem == null) {
+                    PreparedStatement statement = database.newStatement("INSERT INTO Membership (Username, Password) VALUES (?, ?))");
+                    statement.setString(1, itemToSave.getUsername());
+                    statement.setString(2, itemToSave.getPassword());
+                    database.executeUpdate(statement);
+                }
+                else {
+                    PreparedStatement statement = database.newStatement("UPDATE Table SET Username = ?, Password = ? WHERE MembershipID = ?");
+                    statement.setString(1, itemToSave.getUsername());
+                    statement.setString(2, itemToSave.getPassword());
+                    statement.setInt(4, itemToSave.getMembershipId());
+                    database.executeUpdate(statement);
+                }
+        } catch (SQLException resultsException) {
+            System.out.println("Database saving error: " + resultsException.getMessage());
+        }
     }
 }

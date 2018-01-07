@@ -77,7 +77,7 @@ public class LoginPage {
 
         Button searchButton = new Button("Login");
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
-        searchButton.setOnAction((ActionEvent ae) -> LoginPageController.turnToHash(usernameTextfield, passwordfield));
+        searchButton.setOnAction((ActionEvent ae) -> LoginPageController.turnToHash(usernameTextfield, passwordfield, stage));
 
         Hyperlink link = new Hyperlink();
         link.setText("Click here to sign up");

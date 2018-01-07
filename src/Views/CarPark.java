@@ -1,5 +1,7 @@
 package Views;
 
+import Models.CarParkService;
+import Models.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -14,9 +16,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 
 public class CarPark {
-
+    public static DatabaseConnection database;
     public static String carParkTitle;
 
     static Stage parent;
@@ -51,6 +55,13 @@ public class CarPark {
         backButton.setOnAction((ActionEvent e) -> returnStage(stage));
         picAndTitlePane.getChildren().add(backButton);
 
+        int carParkTestId = 3;
+        ArrayList<Models.CarPark> carParkTest = new ArrayList<>();
+        CarParkService.selectById(carParkTestId, database);
+        for (Models.CarPark c: carParkTest) {
+            System.out.println(c);
+            carParkTitle = c.toString();
+        }
         Label titleExample = new Label(carParkTitle);
         titleExample.setStyle("-fx-text-fill: white;");
         titleExample.setFont(new Font( 18));
