@@ -96,23 +96,28 @@ public class SearchResults {
             Rectangle colouredThing = new Rectangle();
             colouredThing.setHeight(50);
             colouredThing.setWidth(10);
-            colouredThing.setFill(Color.GREEN);
-            resultBox.getChildren().add(colouredThing);
+
 
             VBox rightHandSide = new VBox();
 
             Models.CarPark theCarPark = CarParkService.selectById(l.getCarParkId(), database);
 
-            Label label = new Label(theCarPark.getCarParkName());
-            rightHandSide.getChildren().add(label);
+            if(theCarPark.getProblems() == "N/A") {
+                colouredThing.setFill(Color.GREEN);
+            }else {
+                colouredThing.setFill(Color.RED);
+            }
+            resultBox.getChildren().add(colouredThing);
 
             Hyperlink link = new Hyperlink();
-            link.setText("Go to result number " + carParkList);
+            link.setText(theCarPark.getCarParkName());
             link.setOnAction((ActionEvent e) -> SearchResultsController.openNewStage(l.getCarParkId(), stage));
             rightHandSide.getChildren().add(link);
 
             HBox starBox = new HBox();
-            for (int j = 0; j < 5; j++) {
+            int numOfStars = theCarPark.getAverageOutOfFive();
+
+            for (int j = 0; j < numOfStars; j++) {
                 ImageView star = new ImageView(starImage);
                 starBox.getChildren().add(star);
             }

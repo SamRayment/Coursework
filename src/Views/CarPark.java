@@ -1,7 +1,7 @@
 package Views;
 
-import Models.CarParkService;
-import Models.DatabaseConnection;
+import Controller.CarParkController;
+import Models.*;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -53,10 +53,12 @@ public class CarPark {
         Image imageArrow = new Image("Resources/arrow.jpg");
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
-        backButton.setOnAction((ActionEvent e) -> returnStage(stage));
+        backButton.setOnAction((ActionEvent e) -> CarParkController.returnStage(stage));
         picAndTitlePane.getChildren().add(backButton);
 
         Models.CarPark theCarPark = CarParkService.selectById(this.carParkId, SearchPage.database);
+        Location carParkLocation = LocationService.carParkLocation(this.carParkId, SearchPage.database);
+        TownCounty carParkTownCounty = TownCountyService.findCounty(carParkLocation.getTownCountyId(), SearchResults.database);
 
         Label titleExample = new Label(theCarPark.getCarParkName());
         titleExample.setStyle("-fx-text-fill: white;");
@@ -64,64 +66,93 @@ public class CarPark {
         picAndTitlePane.getChildren().add(titleExample);
 
         HBox reviewPane = new HBox(15);
-        Label ProblemExample = new Label("(Status of car park here)");
+        Label ProblemExample = new Label(theCarPark.getProblems());
         reviewPane.getChildren().add(ProblemExample);
 
         Hyperlink reviewLink = new Hyperlink();
         reviewLink.setText("View Reviews");
-        reviewLink.setOnAction((ActionEvent e) -> openNewStage(stage));
+        reviewLink.setOnAction((ActionEvent e) -> CarParkController.openNewStage(stage));
 
         reviewPane.getChildren().add(reviewLink);
 
+        Image cctvImage = new Image("Resources/CCTV.jpg");
+        ImageView iv1 = new ImageView(cctvImage);
+
+        Image electricParkingImage = new Image("Resources/Electric Charging.jpg");
+        ImageView iv2 = new ImageView(electricParkingImage);
+
+        Image disabledParkingImage = new Image("Resources/Disabled Parking.jpg");
+        ImageView iv3 = new ImageView(disabledParkingImage);
+
+        Image childParkingImage = new Image("Resources/Child Parking.jpg");
+        ImageView iv4 = new ImageView(childParkingImage);
+
         HBox picPane = new HBox(10);
-        Label picExample = new Label ("(Pictures of features would go here)");
-        picPane.getChildren().add(picExample);
+        if(carParkLocation.isCctv() == true){
+            picPane.getChildren().add(iv1);
+        }
+
+        if (carParkLocation.isElectricParking() == true){
+            picPane.getChildren().add(iv2);
+        }
+
+        if (carParkLocation.isDisabledParking() == true){
+            picPane.getChildren().add(iv3);
+        }
+
+        if (carParkLocation.isChildParking() == true){
+            picPane.getChildren().add(iv4);
+        }
 
         titlePane.getChildren().add(picAndTitlePane);
 
         ScrollPane scrollPane = new ScrollPane();
 
+
         VBox addressPane = new VBox();
-        Label roadExample = new Label("(Road)");
-        Label town = new Label ("(Town)");
-        Label county = new Label ("(County)");
-        Label postcode = new Label ("(Postcode)");
+        Label roadExample = new Label(carParkLocation.getStreet());
+        Label town = new Label (carParkTownCounty.getTown());
+        Label county = new Label (carParkTownCounty.getCounty());
+        Label postcode = new Label (carParkLocation.getPostcode());
 
         addressPane.getChildren().add(roadExample);
         addressPane.getChildren().add(town);
         addressPane.getChildren().add(county);
         addressPane.getChildren().add(postcode);
 
+        String noOfSpaces = Integer.toString(theCarPark.getNoOfSpaces());
         VBox additionalInfoPane = new VBox();
-        Label spacesLabel = new Label("Number of Space:");
-        Label payPhoneLane = new Label ("Pay-by-phone: ");
+        Label spacesLabel = new Label("Number of spaces: "+noOfSpaces);
+        Label payPhoneLabel = new Label ("Pay by Phone: "+theCarPark.getPhonePayment());
         additionalInfoPane.getChildren().add(spacesLabel);
-        additionalInfoPane.getChildren().add(payPhoneLane);
+        additionalInfoPane.getChildren().add(payPhoneLabel);
+
+        Timetable carParkTimetable = TimetableService.selectById(this.carParkId, SearchPage.database);
 
         VBox timesPane = new VBox();
         Label timesLabel = new Label("Times open");
         timesLabel.setFont(new Font(15));
         HBox weekdayPane = new HBox(37);
         Label weekdayLabel = new Label ("Weekdays:");
-        Label weekdayExample = new Label ("(Times)");
+        Label weekdayExample = new Label (carParkTimetable.getWeekdayOpening()+" : "+carParkTimetable.getWeekdayClosing());
         weekdayPane.getChildren().add(weekdayLabel);
         weekdayPane.getChildren().add(weekdayExample);
 
         HBox saturdayPane = new HBox(44);
         Label saturdayLabel = new Label ("Saturday:");
-        Label saturdayExample = new Label ("(Times)");
+        Label saturdayExample = new Label (carParkTimetable.getSaturdayOpening()+" : "+carParkTimetable.getSaturdayClosing());
         saturdayPane.getChildren().add(saturdayLabel);
         saturdayPane.getChildren().add(saturdayExample);
 
         HBox sundayPane = new HBox(52);
         Label sundayLabel = new Label ("Sunday:");
-        Label sundayExample = new Label ("(Times)");
+        Label sundayExample = new Label (carParkTimetable.getSundayOpening()+" : "+carParkTimetable.getSundayClosing());
         sundayPane.getChildren().add(sundayLabel);
         sundayPane.getChildren().add(sundayExample);
 
         HBox publicHolidaysPane = new HBox(10);
         Label publicHolidaysLabel = new Label ("Public Holidays:");
-        Label publicHolidaysExample = new Label ("(Times)");
+        Label publicHolidaysExample = new Label (carParkTimetable.getPublicHolidayOpening()+" : "+carParkTimetable.getPublicHolidayClosing());
         publicHolidaysPane.getChildren().add(publicHolidaysLabel);
         publicHolidaysPane.getChildren().add(publicHolidaysExample);
 
@@ -131,16 +162,18 @@ public class CarPark {
         timesPane.getChildren().add(sundayPane);
         timesPane.getChildren().add(publicHolidaysPane);
 
+        String costPerHour = Integer.toString(theCarPark.getCostPerHour());
         VBox costsPane = new VBox();
-        Label costsLabel = new Label("Cost hour:");
+        Label costsLabel = new Label("Cost each hour:");
         HBox  perHourPane = new HBox();
-        Label costExample = new Label ("(Cost)");
+        Label costExample = new Label ("    £"+costPerHour);
         perHourPane.getChildren().add(costsLabel);
         perHourPane.getChildren().add(costExample);
 
+        String lostTicket = Integer.toString(theCarPark.getLostTicket());
         HBox lostTicketPane = new HBox();
         Label  lostTicketLabel= new Label ("Lost ticket:");
-        Label lostTicketExample = new Label ("(Cost)");
+        Label lostTicketExample = new Label ("    £"+lostTicket);
         lostTicketPane.getChildren().add(lostTicketLabel);
         lostTicketPane.getChildren().add(lostTicketExample);
 
@@ -151,7 +184,7 @@ public class CarPark {
         picPane.setPadding(new Insets(0, 0,0,10));
         addressPane.setPadding(new Insets(0, 0,0,10));
         spacesLabel.setPadding(new Insets(0, 0,0,10));
-        payPhoneLane.setPadding(new Insets(0, 0,0,10));
+        payPhoneLabel.setPadding(new Insets(0, 0,0,10));
         additionalInfoPane.setPadding(new Insets(0, 0,0,10));
         timesPane.setPadding(new Insets(0, 0,0,10));
         costsPane.setPadding(new Insets(0, 0,0,10));
@@ -162,18 +195,11 @@ public class CarPark {
         rootPane.getChildren().add(picPane);
         rootPane.getChildren().add(addressPane);
         rootPane.getChildren().add(spacesLabel);
-        rootPane.getChildren().add(payPhoneLane);
+        rootPane.getChildren().add(payPhoneLabel);
         rootPane.getChildren().add(additionalInfoPane);
         rootPane.getChildren().add(timesPane);
         rootPane.getChildren().add(costsPane);
         scrollPane.setContent(rootPane);
 
-    }
-    public static void openNewStage(Stage parent) {
-        AllReviews newStage = new AllReviews(parent);
-    }
-    public static void returnStage(Stage parent){
-        SearchResults returnStage = new SearchResults(
-                parent);
     }
 }

@@ -3,19 +3,19 @@ package Controller;
 import Models.CarPark;
 import Models.CarParkService;
 import Models.DatabaseConnection;
+import Views.AllReviews;
+import Views.SearchResults;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
 public class CarParkController {
-    public static DatabaseConnection database;
+    public static void openNewStage(Stage parent) {
+        AllReviews newStage = new AllReviews(parent);
+    }
 
-    public static void selectedCarPark(){
-        int carParkTestId = 3;
-
-        ArrayList<CarPark> carParkTest = new ArrayList<>();
-        CarParkService.selectById(carParkTestId, database);
-        for (CarPark c: carParkTest) {
-            System.out.println(c);
-        }
+    public static void returnStage(Stage parent) {
+        SearchResults returnStage = new SearchResults(
+                parent);
     }
 }
