@@ -4,6 +4,9 @@ import Models.DatabaseConnection;
 import Models.Membership;
 import Models.MembershipService;
 import Views.CreateReviewPage;
+import Views.LoginPage;
+import Views.SearchResults;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -17,16 +20,18 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginPageController {
 
-    public static DatabaseConnection database;
-
-    public static void turnToHash(TextField usernameTextfield, PasswordField passwordField, Stage stage){
+    static Stage parent;
+    public static void turnToHash(TextField usernameTextfield, PasswordField passwordField, Stage parent) {
 
         String usernameAsString = usernameTextfield.getText();
         String passwordAsString = passwordField.getText();
-        System.out.println(usernameAsString);
-        System.out.println(generateHash(passwordAsString));
-        Membership member = MembershipService.selectMemberById(usernameAsString, generateHash(passwordAsString), database);
-        //openNewStage(stage);
+        String hashedPassword = generateHash(passwordAsString);
+        Membership member = MembershipService.selectMemberById(usernameAsString, hashedPassword, SearchResults.database);
+        if (member == null) {
+            LoginPage error = new LoginPage(parent);
+        } else{
+            CreateReviewPage newStage = new CreateReviewPage(parent);
+        }
     }
 
     public static String generateHash(String passwordAsString) {
@@ -39,10 +44,5 @@ public class LoginPageController {
             return nsae.getMessage();
         }
     }
-
-    public static void openNewStage(Stage parent) {
-        CreateReviewPage newStage = new CreateReviewPage(parent);
-    }
-
 }
 

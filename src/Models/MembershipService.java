@@ -11,7 +11,7 @@ public class MembershipService {
 
         Membership result = null;
 
-        PreparedStatement statement = database.newStatement("SELECT MembershipID  FROM Memberships WHERE  Username = ? AND HashcodePassword = ?");
+        PreparedStatement statement = database.newStatement("SELECT MembershipID, Username, HashcodePassword  FROM Memberships WHERE  Username = ? AND HashcodePassword = ?");
 
         try {
             if (statement != null) {
@@ -22,9 +22,10 @@ public class MembershipService {
 
                 if (results != null) {
                     result = new Membership(
-                            results.getInt("MembershipID"));
+                            results.getInt("MembershipID"),
+                            results.getString("Username"),
+                            results.getString("HashcodePassword"));
                 }
-                System.out.println("Results found: " + result);
             }
         } catch (SQLException resultsException) {
             System.out.println("Database select by id error: " + resultsException.getMessage());
