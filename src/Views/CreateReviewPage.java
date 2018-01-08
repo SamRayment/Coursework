@@ -106,7 +106,7 @@ public class CreateReviewPage {
         Button sendButton = new Button("Send");
         sendButton.setPrefSize(200, 20);
         sendButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px;");
-        sendButton.setOnAction((ActionEvent e) -> returnStage(stage));
+     //   sendButton.setOnAction((ActionEvent e) -> returnStage(stage));
         buttonPane.getChildren().add(sendButton);
 
         buttonPane.setAlignment(Pos.CENTER);
@@ -116,7 +116,7 @@ public class CreateReviewPage {
         rootPane.getChildren().add(review);
         rootPane.getChildren().add(buttonPane);
     }
-    public static void returnStage(Stage parent){
+   /* public static void returnStage(Stage parent){
         AllReviews returnStage = new AllReviews(parent);
-    }
+    }*/
 }

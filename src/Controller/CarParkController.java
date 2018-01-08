@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class CarParkController {
-    public static void openNewStage(Stage parent) {
-        AllReviews newStage = new AllReviews(parent);
+    public static void openNewStage(int carParkId, Stage parent) {
+        AllReviews newStage = new AllReviews(carParkId, parent);
     }
 
     public static void returnStage(Stage parent) {

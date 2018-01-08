@@ -3,34 +3,36 @@ package Models;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ReviewService {
-    public static Review selectById(int carParkId, int membershipId, DatabaseConnection database) {
+    public static ArrayList<Review> selectById(int carParkId, DatabaseConnection database) {
 
-        Review result = null;
+        ArrayList<Review> theReviews = new ArrayList<>();
 
-            PreparedStatement statement = database.newStatement("SELECT Explanation, OutOfFive FROM Reviews WHERE CarParkID = ? AND MembershipID = ?");
+            PreparedStatement statement = database.newStatement("SELECT ReviewID, CarParkID" +
+                    "Explanation, OutOfFive FROM Reviews WHERE CarParkID = ?");
 
         try {
             if (statement != null) {
 
                 statement.setInt(1, carParkId);
-                statement.setInt(2, membershipId);
                 ResultSet results = database.executeQuery(statement);
 
                 if (results != null) {
-                    result = new Review(
+                    theReviews.add(new Review(
+                            results.getInt("ReviewID"),
+                            results.getInt("CarParkID"),
                             results.getString("Explanation"),
                             results.getInt("OutOfFive")
-                    );
-                    System.out.print("Result found: "+ result);
+                    ));
                 }
             }
         } catch (SQLException resultsException) {
             System.out.println("Database select by id error: " + resultsException.getMessage());
         }
 
-        return result;
+        return theReviews;
     }
 /*
 public static void save(Review itemToSave, DatabaseConnection database) {

@@ -71,7 +71,7 @@ public class CarPark {
 
         Hyperlink reviewLink = new Hyperlink();
         reviewLink.setText("View Reviews");
-        reviewLink.setOnAction((ActionEvent e) -> CarParkController.openNewStage(stage));
+        reviewLink.setOnAction((ActionEvent e) -> CarParkController.openNewStage(theCarPark.getCarParkId(), stage));
 
         reviewPane.getChildren().add(reviewLink);
 

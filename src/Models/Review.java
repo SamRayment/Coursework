@@ -2,29 +2,24 @@ package Models;
 
 
 public class Review {
-    private int membershipId;
+    private int reviewId;
     private int carParkId;
-
     private String explanation;
     private int outOfFive;
 
-    public Review(int membershipId, int carParkId, String explanation, int outOfFive) {
-        this.membershipId = membershipId;
+    public Review(int reviewId, int carParkId, String explanation, int outOfFive) {
+        this.reviewId = reviewId;
         this.carParkId = carParkId;
         this.explanation = explanation;
         this.outOfFive = outOfFive;
     }
 
-    public Review(String explanation, int outOfFive){
-        this.explanation = explanation;
-        this.outOfFive = outOfFive;
-    }
-    public int getMembershipId() {
-        return membershipId;
+    public int getReviewId() {
+        return reviewId;
     }
 
-    public void setMembershipId(int membershipId) {
-        this.membershipId = membershipId;
+    public void setReviewId(int reviewId) {
+        this.reviewId = reviewId;
     }
 
     public int getCarParkId() {
