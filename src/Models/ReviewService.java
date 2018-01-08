@@ -32,7 +32,7 @@ public class ReviewService {
 
         return result;
     }
-
+/*
 public static void save(Review itemToSave, DatabaseConnection database) {
 
  Review existingItem = null;
@@ -55,5 +55,5 @@ database.executeUpdate(statement);
    System.out.println("Database saving error: " + resultsException.getMessage());
 }
 }
-
+*/
 }

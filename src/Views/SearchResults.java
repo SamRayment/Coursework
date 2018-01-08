@@ -1,5 +1,6 @@
 package Views;
 
+import Controller.SearchResultsController;
 import Models.*;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -83,7 +84,13 @@ public class SearchResults {
 
         Image starImage =  new Image("Resources/YellowStar.jpg");
 
-        for (int i = 0; i < 1; i++) {
+        ArrayList<Location> carParkList = LocationService.selectToLocate(townSelected,
+                                                        requirementsSelected.get("CCTV"),
+                                                        requirementsSelected.get("Electric Charging"),
+                                                        requirementsSelected.get("Disabled Parking"),
+                                                        requirementsSelected.get("Child Parking"), database);
+
+        for (Location l: carParkList) {
             HBox resultBox = new HBox();
 
             Rectangle colouredThing = new Rectangle();
@@ -94,19 +101,14 @@ public class SearchResults {
 
             VBox rightHandSide = new VBox();
 
-            Label label = new Label("Wooo! A result!");
-            rightHandSide.getChildren().add(label);
+            Models.CarPark theCarPark = CarParkService.selectById(l.getCarParkId(), database);
 
-            ArrayList<Location> carParkList = new ArrayList<>();
-            LocationService.selectToLocate(townSelected,
-                    requirementsSelected.get("CCTV"),
-                    requirementsSelected.get("Electric Charging"),
-                    requirementsSelected.get("Disabled Parking"),
-                    requirementsSelected.get("Child Parking"), database);
+            Label label = new Label(theCarPark.getCarParkName());
+            rightHandSide.getChildren().add(label);
 
             Hyperlink link = new Hyperlink();
             link.setText("Go to result number " + carParkList);
-            link.setOnAction((ActionEvent e) -> openNewStage(stage));
+            link.setOnAction((ActionEvent e) -> SearchResultsController.openNewStage(l.getCarParkId(), stage));
             rightHandSide.getChildren().add(link);
 
             HBox starBox = new HBox();
@@ -125,7 +127,5 @@ public class SearchResults {
         rootPane.getChildren().add(searchScrollPane);
     }
 
-    public static void openNewStage(Stage parent) {
-        CarPark newStage = new CarPark(parent);
-    }
+
 }

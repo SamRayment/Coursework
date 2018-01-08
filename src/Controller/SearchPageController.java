@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 
 import java.util.HashMap;
 
-import static Controller.SearchResultsController.selectToLocate;
 import static Views.SearchPage.requirementsCheckboxes;
 import static Views.SearchPage.townCitySelector;
 
@@ -35,7 +34,6 @@ public class SearchPageController{
 
         selectedLocation(); // (Figure L36) Sends the program to the object selectedLocation
         SearchResults newStage = new SearchResults(parent); //(Figure L37) Opens up the next stage which is the SearchResults view
-        selectToLocate(); //(Figure 38) Goes to the object selectToLocate in the SearchResultsController
     }
 
 }

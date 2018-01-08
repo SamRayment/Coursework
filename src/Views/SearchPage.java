@@ -72,21 +72,17 @@ public class SearchPage extends Application {
 
         searchButton.setOnAction((ActionEvent ae) -> SearchPageController.openNewStage(stage));
 
-        ArrayList<TownCounty> testList = new ArrayList<>();
-        TownCountyService.selectAll(testList, database);
-        for (TownCounty c: testList) {
-            System.out.println(c);
 
-        rootPane.getChildren().add(title);
-        rootPane.getChildren().add(searchLabel);
-        rootPane.getChildren().add(townCitySelector);
-        rootPane.getChildren().add(checkBoxBox);
-        rootPane.getChildren().add(searchButton);
+            rootPane.getChildren().add(title);
+            rootPane.getChildren().add(searchLabel);
+            rootPane.getChildren().add(townCitySelector);
+            rootPane.getChildren().add(checkBoxBox);
+            rootPane.getChildren().add(searchButton);
 
 
-
+        }
     }
-}
+
 
 
 

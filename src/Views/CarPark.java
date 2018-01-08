@@ -20,14 +20,15 @@ import java.util.ArrayList;
 
 
 public class CarPark {
-    public static DatabaseConnection database;
-    public static String carParkTitle;
 
     static Stage parent;
 
-    public CarPark(Stage theParent) {
+    private int carParkId;
+
+    public CarPark(int carParkId, Stage theParent) {
 
         Stage stage = new Stage();
+        this.carParkId = carParkId;
         parent = theParent;
         parent.hide();
         start(stage);
@@ -37,7 +38,7 @@ public class CarPark {
         VBox rootPane = new VBox(5);
         Scene scene = new Scene(rootPane, 280, 448);
 
-        stage.setTitle("Car Park");
+        stage.setTitle("Car Park (id: " + this.carParkId + ")");
         stage.setScene(scene);
         stage.show();
 
@@ -55,14 +56,9 @@ public class CarPark {
         backButton.setOnAction((ActionEvent e) -> returnStage(stage));
         picAndTitlePane.getChildren().add(backButton);
 
-        int carParkTestId = 3;
-        ArrayList<Models.CarPark> carParkTest = new ArrayList<>();
-        CarParkService.selectById(carParkTestId, database);
-        for (Models.CarPark c: carParkTest) {
-            System.out.println(c);
-            carParkTitle = c.toString();
-        }
-        Label titleExample = new Label(carParkTitle);
+        Models.CarPark theCarPark = CarParkService.selectById(this.carParkId, SearchPage.database);
+
+        Label titleExample = new Label(theCarPark.getCarParkName());
         titleExample.setStyle("-fx-text-fill: white;");
         titleExample.setFont(new Font( 18));
         picAndTitlePane.getChildren().add(titleExample);

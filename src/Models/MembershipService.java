@@ -32,7 +32,7 @@ public class MembershipService {
 
         return result;
     }
-
+/*
     public static void addNewMember(Review itemToSave, DatabaseConnection database) {
 
         Membership existingItem = null;
@@ -55,5 +55,5 @@ public class MembershipService {
         } catch (SQLException resultsException) {
             System.out.println("Database saving error: " + resultsException.getMessage());
         }
-    }
+    }*/
 }

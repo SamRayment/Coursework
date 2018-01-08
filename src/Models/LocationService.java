@@ -4,19 +4,20 @@ package Models;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class LocationService {
     public static ResultSet results;
 
-    public static Location selectToLocate(String town,
-                                          boolean cctv,
-                                          boolean electricParking,
-                                          boolean disabledParking,
-                                          boolean childParking,
-                                          DatabaseConnection database) {
+    public static ArrayList<Location> selectToLocate(String town,
+                                                     boolean cctv,
+                                                     boolean electricParking,
+                                                     boolean disabledParking,
+                                                     boolean childParking,
+                                                     DatabaseConnection database) {
 
-        Location result = null;
+        ArrayList<Location> theLocations = new ArrayList<>();
 
         PreparedStatement statement = database.newStatement(
                 "SELECT PostcodeID, Street, TownCountyID, Postcode, CarParkID, CCTV," +
@@ -45,7 +46,7 @@ public class LocationService {
 
                     while (results.next()) {
 
-                        result = new Location(
+                        theLocations.add(new Location(
                                 results.getInt("PostcodeID"),
                                 results.getString("Street"),
                                 results.getInt("TownCountyID"),
@@ -54,9 +55,7 @@ public class LocationService {
                                 results.getBoolean("CCTV"),
                                 results.getBoolean("ElectricParking"),
                                 results.getBoolean("DisabledParking"),
-                                results.getBoolean("ChildParking"));
-
-                        System.out.println("Result found: " + result);
+                                results.getBoolean("ChildParking")));
 
                     }
                 }
@@ -65,6 +64,6 @@ public class LocationService {
             System.out.println("Database select by id error: " + resultsException.getMessage());
         }
 
-        return result;
+        return theLocations;
     }
 }
