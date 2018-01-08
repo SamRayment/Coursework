@@ -10,7 +10,7 @@ public class ReviewService {
 
         ArrayList<Review> theReviews = new ArrayList<>();
 
-            PreparedStatement statement = database.newStatement("SELECT ReviewID, CarParkID" +
+            PreparedStatement statement = database.newStatement("SELECT ReviewID, CarParkID," +
                     "Explanation, OutOfFive FROM Reviews WHERE CarParkID = ?");
 
         try {
