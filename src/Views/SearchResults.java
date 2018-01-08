@@ -116,7 +116,6 @@ public class SearchResults {
 
             HBox starBox = new HBox();
             int numOfStars = theCarPark.getAverageOutOfFive();
-
             for (int j = 0; j < numOfStars; j++) {
                 ImageView star = new ImageView(starImage);
                 starBox.getChildren().add(star);

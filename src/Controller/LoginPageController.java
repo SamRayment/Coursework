@@ -1,6 +1,7 @@
 package Controller;
 
 import Models.DatabaseConnection;
+import Models.Membership;
 import Models.MembershipService;
 import Views.CreateReviewPage;
 import javafx.scene.control.PasswordField;
@@ -20,17 +21,19 @@ public class LoginPageController {
 
     public static void turnToHash(TextField usernameTextfield, PasswordField passwordField, Stage stage){
 
-        String usernameAsString = usernameTextfield.toString();
-        String passwordAsString = passwordField.toString();
-        MembershipService.selectMemberById(usernameAsString, generateHash(passwordAsString), database);
-        openNewStage(stage);
+        String usernameAsString = usernameTextfield.getText();
+        String passwordAsString = passwordField.getText();
+        System.out.println(usernameAsString);
+        System.out.println(generateHash(passwordAsString));
+        Membership member = MembershipService.selectMemberById(usernameAsString, generateHash(passwordAsString), database);
+        //openNewStage(stage);
     }
 
     public static String generateHash(String passwordAsString) {
    try {
             MessageDigest hasher = MessageDigest.getInstance("MD5");
             hasher.update(passwordAsString.getBytes());
-            System.out.println(DatatypeConverter.printHexBinary(hasher.digest()).toUpperCase());
+            DatatypeConverter.printHexBinary(hasher.digest()).toUpperCase();
             return DatatypeConverter.printHexBinary(hasher.digest()).toUpperCase();
         } catch (NoSuchAlgorithmException nsae) {
             return nsae.getMessage();

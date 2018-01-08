@@ -88,11 +88,11 @@ public class AllReviews {
             totalReview.getChildren().add(explanation);
         }
 
-        searchPane.setContent(starBox);
+        searchPane.setContent(totalReview);
         VBox createReviewPane = new VBox();
         Hyperlink link = new Hyperlink();
         link.setText("Create Review");
-       // link.setOnAction((ActionEvent e) -> AllReviewsController.LoginOpen(stage));
+        link.setOnAction((ActionEvent e) -> AllReviewsController.LoginOpen(stage));
         createReviewPane.getChildren().add(link);
 
 

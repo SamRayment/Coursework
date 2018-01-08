@@ -24,14 +24,22 @@ import static Controller.SearchPageController.requirementsSelected;
 import static Controller.SearchPageController.townSelected;
 
 
-public class SearchPage extends Application {
+public class SearchPage extends Application{
 
     public static DatabaseConnection database;
     public static CheckBox[] requirementsCheckboxes;
     public static ChoiceBox<TownCounty> townCitySelector;
+    static Stage parent;
 
-    @Override
-    public void start(Stage stage) throws Exception {
+   /* public SearchPage(Stage theParent) {
+
+        Stage stage = new Stage();
+        parent = theParent;
+        parent.hide();
+        start(stage);
+    }*/
+
+    public void start(Stage stage) throws Exception{
 
         database = new DatabaseConnection("Coursework.db");
 
