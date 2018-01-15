@@ -25,8 +25,10 @@ public class SearchPageController{
 
         requirementsSelected = new HashMap<>(); // (Figure L27) requirementsSelected is declared as a new hash map
 
-        for (CheckBox c : requirementsCheckboxes) { // (Figure L29) An enhanced for loop is created where it goes through each value of the check box requirementsCheckboxes
-            requirementsSelected.put(c.getText(), c.isSelected());// (Figure L30) The values from requirementsCheckboxes are added to the hash map requirementsSelected
+        for (CheckBox c : requirementsCheckboxes) { // (Figure L29) An enhanced for loop is created where it goes through each value of the
+            // check box requirementsCheckboxes
+            requirementsSelected.put(c.getText(), c.isSelected());// (Figure L30) The values from requirementsCheckboxes are added to the
+            // hash map requirementsSelected
         }
     }
 

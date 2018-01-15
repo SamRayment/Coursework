@@ -1,5 +1,7 @@
 package Views;
 
+import Controller.CreateReviewPageController;
+import Controller.LoginPageController;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,11 +19,12 @@ public class CreateReviewPage {
 
 
     static Stage parent;
+    private int carParkId;
 
-    public CreateReviewPage(Stage theParent) {
-
+    public CreateReviewPage(int carParkId, Stage theParent) {
         Stage stage = new Stage();
         parent = theParent;
+        this.carParkId = carParkId;
         parent.hide();
         start(stage);
 
@@ -45,7 +48,7 @@ public class CreateReviewPage {
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setOnAction((ActionEvent e) -> {
-            parent.show();
+            LoginPageController.returnStage(carParkId, stage);
         });
         picAndTitlePane.getChildren().add(backButton);
 
@@ -62,8 +65,8 @@ public class CreateReviewPage {
 
         HBox reviewStarPane = new HBox(10);
 
-        Image greyStar = new Image(getClass().getResourceAsStream("Resources/star.jpg"));
-        Image yellowStar = new Image(getClass().getResourceAsStream("Resources/YellowStar.jpg"));
+        Image greyStar = new Image("Resources/star.jpg");
+        Image yellowStar = new Image("Resources/YellowStar.jpg");
         Button firstStar = new Button();
         firstStar.setGraphic(new ImageView(greyStar));
         firstStar.setOnAction((ActionEvent e) -> {
@@ -106,7 +109,7 @@ public class CreateReviewPage {
         Button sendButton = new Button("Send");
         sendButton.setPrefSize(200, 20);
         sendButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px;");
-     //   sendButton.setOnAction((ActionEvent e) -> returnStage(stage));
+        sendButton.setOnAction((ActionEvent e) -> CreateReviewPageController.returnStage(carParkId, stage));
         buttonPane.getChildren().add(sendButton);
 
         buttonPane.setAlignment(Pos.CENTER);
@@ -116,7 +119,4 @@ public class CreateReviewPage {
         rootPane.getChildren().add(review);
         rootPane.getChildren().add(buttonPane);
     }
-   /* public static void returnStage(Stage parent){
-        AllReviews returnStage = new AllReviews(parent);
-    }*/
 }

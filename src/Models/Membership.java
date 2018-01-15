@@ -3,12 +3,12 @@ package Models;
 public class Membership {
     private int membershipId;
     private String username;
-    private String password;
+    private String hashcodePassword;
 
     public Membership(int membershipId, String username, String password) {
         this.membershipId = membershipId;
         this.username = username;
-        this.password = password;
+        this.hashcodePassword = password;
     }
 
     public Membership(int membershipId){
@@ -32,11 +32,11 @@ public class Membership {
     }
 
     public String getPassword() {
-        return password;
+        return hashcodePassword;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.hashcodePassword = password;
     }
 
     @Override

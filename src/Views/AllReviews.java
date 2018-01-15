@@ -56,7 +56,7 @@ public class AllReviews {
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
         backButton.setOnAction((ActionEvent e) -> {
-            parent.show();
+            AllReviewsController.returnStage(carParkId, parent);
         });
         picAndTitlePane.getChildren().add(backButton);
 
@@ -92,7 +92,7 @@ public class AllReviews {
         VBox createReviewPane = new VBox();
         Hyperlink link = new Hyperlink();
         link.setText("Create Review");
-        link.setOnAction((ActionEvent e) -> AllReviewsController.LoginOpen(stage));
+        link.setOnAction((ActionEvent e) -> AllReviewsController.LoginOpen(carParkId, stage));
         createReviewPane.getChildren().add(link);
 
 

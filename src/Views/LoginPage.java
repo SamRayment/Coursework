@@ -1,6 +1,7 @@
 package Views;
 
 
+import Controller.CreateReviewPageController;
 import Controller.LoginPageController;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -19,10 +20,12 @@ import javafx.stage.Stage;
 public class LoginPage {
 
     static Stage parent;
+    private int carParkId;
 
-    public LoginPage(Stage theParent) {
+    public LoginPage(int carParkId, Stage theParent) {
 
         Stage stage = new Stage();
+        this.carParkId = carParkId;
         parent = theParent;
         parent.hide();
         start(stage);
@@ -56,7 +59,7 @@ public class LoginPage {
         Image imageArrow = new Image("Resources/arrow.jpg");
         Button backButton = new Button();
         backButton.setGraphic(new ImageView(imageArrow));
-        backButton.setOnAction((ActionEvent e) -> returnStage(stage));
+        backButton.setOnAction((ActionEvent e) -> CreateReviewPageController.returnStage(carParkId, stage));
         picAndTitlePane.getChildren().add(backButton);
 
         Label titleLabel = new Label("Login");
@@ -77,11 +80,11 @@ public class LoginPage {
 
         Button searchButton = new Button("Login");
         searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
-        searchButton.setOnAction((ActionEvent ae) -> LoginPageController.turnToHash(usernameTextfield, passwordfield, stage));
+        searchButton.setOnAction((ActionEvent ae) -> LoginPageController.turnToHash(usernameTextfield, passwordfield, stage, carParkId));
 
         Hyperlink link = new Hyperlink();
         link.setText("Click here to sign up");
-        link.setOnAction((ActionEvent e) -> linkToSignUp(stage));
+        link.setOnAction((ActionEvent e) -> LoginPageController.linkToSignUp(stage));
 
         titlePane.getChildren().add(picAndTitlePane);
         rootPane.getChildren().add(titlePane);
@@ -92,16 +95,6 @@ public class LoginPage {
         loginPane.getChildren().add(link);
         rootPane.getChildren().add(loginPane);
     }
-
-    public static void returnStage(Stage parent){
-        //CarPark returnStage = new CarPark(parent);
-    }
-
-    public static void openNewStage(Stage parent) {
-        CreateReviewPage newStage = new CreateReviewPage(parent);
-    }
-
-    public static void linkToSignUp(Stage parent) {SignUpPage newStage = new SignUpPage(parent);}
 }
 
 
