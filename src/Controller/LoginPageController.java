@@ -27,11 +27,7 @@ public class LoginPageController {
         String passwordAsString = passwordField.getText();
         String hashedPassword = generateHash(passwordAsString);
         Membership member = MembershipService.selectMemberById(usernameAsString, hashedPassword, SearchResults.database);
-        if (member == null) {
-            LoginPage error = new LoginPage(parent);
-        } else{
-            CreateReviewPage newStage = new CreateReviewPage(parent);
-        }
+        openCreateReviewPage(member, parent);
     }
 
     public static String generateHash(String passwordAsString) {
@@ -42,6 +38,14 @@ public class LoginPageController {
             return DatatypeConverter.printHexBinary(hasher.digest()).toUpperCase();
         } catch (NoSuchAlgorithmException nsae) {
             return nsae.getMessage();
+        }
+    }
+
+    public static void openCreateReviewPage(Membership member, Stage parent){
+        if (member == null) {
+            LoginPage error = new LoginPage(parent);
+        } else{
+            CreateReviewPage newStage = new CreateReviewPage(parent);
         }
     }
 }

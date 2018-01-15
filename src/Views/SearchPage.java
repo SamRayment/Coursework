@@ -29,15 +29,6 @@ public class SearchPage extends Application{
     public static DatabaseConnection database;
     public static CheckBox[] requirementsCheckboxes;
     public static ChoiceBox<TownCounty> townCitySelector;
-    static Stage parent;
-
-   /* public SearchPage(Stage theParent) {
-
-        Stage stage = new Stage();
-        parent = theParent;
-        parent.hide();
-        start(stage);
-    }*/
 
     public void start(Stage stage) throws Exception{
 
