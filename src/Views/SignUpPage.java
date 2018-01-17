@@ -77,16 +77,16 @@ public class SignUpPage {
 
 
 
-        Button searchButton = new Button("Enter");
-        searchButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
-        searchButton.setOnAction((ActionEvent ae) -> SignUpPageController.turnToHash(createUsernameTextfield, createPasswordfield));
+        Button signButton = new Button("Enter");
+        signButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
+        signButton.setOnAction((ActionEvent ae) -> SignUpPageController.turnToHash(createUsernameTextfield, createPasswordfield));
 
         titlePane.getChildren().add(picAndTitlePane);
         rootPane.getChildren().add(titlePane);
         loginPane.getChildren().add(title);
         loginPane.getChildren().add(createUsernameTextfield);
         loginPane.getChildren().add(createPasswordfield);
-        loginPane.getChildren().add(searchButton);
+        loginPane.getChildren().add(signButton);
         rootPane.getChildren().add(loginPane);
     }
 }

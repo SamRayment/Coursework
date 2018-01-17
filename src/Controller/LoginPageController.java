@@ -28,12 +28,12 @@ public class LoginPageController {
 
     public static String generateHash(String passwordAsString) {
    try {
-            MessageDigest hasher = MessageDigest.getInstance("MD5");
-            hasher.update(passwordAsString.getBytes());
-            DatatypeConverter.printHexBinary(hasher.digest()).toUpperCase();
-            return DatatypeConverter.printHexBinary(hasher.digest()).toUpperCase();
-        } catch (NoSuchAlgorithmException nsae) {
-            return nsae.getMessage();
+            MessageDigest hasher = MessageDigest.getInstance("MD5"); //(Figure GH1)
+            hasher.update(passwordAsString.getBytes()); //(Figure GH2)
+            DatatypeConverter.printHexBinary(hasher.digest()).toUpperCase(); //(Figure GH3)
+            return DatatypeConverter.printHexBinary(hasher.digest()).toUpperCase(); // (Figure GH4)
+        } catch (NoSuchAlgorithmException nsae) { //(Figure GH5)
+            return nsae.getMessage(); //(Figure GH6)
         }
     }
 

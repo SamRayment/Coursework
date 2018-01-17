@@ -25,7 +25,7 @@ public class SignUpPageController {
             Membership m = new Membership(0, usernameAsString, hashedPassword);
             MembershipService.save(m, database);
         }
-
+        
         public static String generateHash(String passwordAsString) {
             try {
                 MessageDigest hasher = MessageDigest.getInstance("MD5");
