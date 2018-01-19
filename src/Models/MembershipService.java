@@ -68,12 +68,12 @@ public class MembershipService {
             existingItem = selectMemberById(itemToSave.getMembershipId(), database);
         try {
             if (existingItem == null) {
-                PreparedStatement statement = database.newStatement("INSERT INTO Membership (Username, HashcodePassword) VALUES (?,?))");
+                PreparedStatement statement = database.newStatement("INSERT INTO Memberships (Username, HashcodePassword) VALUES (?,?)");
                 statement.setString(1, itemToSave.getUsername());
                 statement.setString(2, itemToSave.getPassword());
                 database.executeUpdate(statement);
             } else {
-                PreparedStatement statement = database.newStatement("UPDATE Membership SET Username = ?, HashcodePassword = ? WHERE MembershipID = ?");
+                PreparedStatement statement = database.newStatement("UPDATE Memberships SET Username = ?, HashcodePassword = ? WHERE MembershipID = ?");
                 statement.setString(1, itemToSave.getUsername());
                 statement.setString(1, itemToSave.getPassword());
                 statement.setInt(3, itemToSave.getMembershipId());

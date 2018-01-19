@@ -17,10 +17,11 @@ public class SignUpPage {
 
 
     static Stage parent;
-
-    public SignUpPage(Stage theParent) {
+    private int carParkId;
+    public SignUpPage(int carParkId, Stage theParent) {
 
         Stage stage = new Stage();
+        this.carParkId = carParkId;
         parent = theParent;
         parent.hide();
         start(stage);
@@ -79,7 +80,7 @@ public class SignUpPage {
 
         Button signButton = new Button("Enter");
         signButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px; -fx-max-width: 150px; -fx-max-height: 5px;");
-        signButton.setOnAction((ActionEvent ae) -> SignUpPageController.turnToHash(createUsernameTextfield, createPasswordfield));
+        signButton.setOnAction((ActionEvent ae) -> SignUpPageController.turnToHash(createUsernameTextfield, createPasswordfield, stage, carParkId));
 
         titlePane.getChildren().add(picAndTitlePane);
         rootPane.getChildren().add(titlePane);

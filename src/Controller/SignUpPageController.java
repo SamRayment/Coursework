@@ -18,12 +18,15 @@ import java.security.NoSuchAlgorithmException;
 public class SignUpPageController {
 
 
-        public static void turnToHash(TextField usernameTextfield, PasswordField passwordField){
-            String usernameAsString = usernameTextfield.toString();
-            String passwordAsString = passwordField.toString();
+        public static void turnToHash(TextField usernameTextfield, PasswordField passwordField, Stage parent, int carParkId){
+            String usernameAsString = usernameTextfield.getText();
+            System.out.println(usernameAsString);
+            String passwordAsString = passwordField.getText();
             String hashedPassword = generateHash(passwordAsString);
             Membership m = new Membership(0, usernameAsString, hashedPassword);
             MembershipService.save(m, SearchPage.database);
+            returnLogin(carParkId, parent);
+
         }
         
         public static String generateHash(String passwordAsString) {
@@ -35,7 +38,9 @@ public class SignUpPageController {
             } catch (NoSuchAlgorithmException nsae) {
                 return nsae.getMessage();
         }
-
     }
+        public static void returnLogin(int carParkId, Stage parent){
+            LoginPage newStage = new LoginPage(carParkId, parent);
+        }
 }
 

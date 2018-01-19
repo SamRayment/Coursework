@@ -84,7 +84,7 @@ public class LoginPage {
 
         Hyperlink link = new Hyperlink();
         link.setText("Click here to sign up");
-        link.setOnAction((ActionEvent e) -> LoginPageController.linkToSignUp(stage));
+        link.setOnAction((ActionEvent e) -> LoginPageController.linkToSignUp(carParkId, stage));
 
         titlePane.getChildren().add(picAndTitlePane);
         rootPane.getChildren().add(titlePane);

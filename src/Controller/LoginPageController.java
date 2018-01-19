@@ -49,7 +49,7 @@ public class LoginPageController {
         CarPark returnStage = new CarPark(carParkId, parent);
     }
 
-    public static void linkToSignUp(Stage parent) {
-        SignUpPage newStage = new SignUpPage(parent);}
+    public static void linkToSignUp(int carParkId, Stage parent) {
+        SignUpPage newStage = new SignUpPage(carParkId, parent);}
 }
 
