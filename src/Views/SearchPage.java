@@ -3,6 +3,7 @@ package Views;
 import Controller.SearchPageController;
 import Models.*;
 import Models.CarPark;
+import com.sun.org.apache.xpath.internal.operations.String;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -24,13 +25,13 @@ import static Controller.SearchPageController.requirementsSelected;
 import static Controller.SearchPageController.townSelected;
 
 
-public class SearchPage extends Application{
+public class SearchPage extends Application {
 
     public static DatabaseConnection database;  //(Line V1) Public database connection
     public static CheckBox[] requirementsCheckboxes;  //(Line V2) Public checkbox called requirementsCheckboxes
     public static ChoiceBox<TownCounty> townCitySelector;  //(Line V3) Public choiceBox called townCitySelector
 
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
 
         database = new DatabaseConnection("Coursework.db"); //(Line V4) Creates the database connection and the database file
 
@@ -80,10 +81,12 @@ public class SearchPage extends Application{
         rootPane.getChildren().add(townCitySelector);  //(Line V34) Adds the choice box, townCitySelector, to the rootPane
         rootPane.getChildren().add(checkBoxPane);  //(Line V32) Adds the VBox, checkBoxPane, to the rootPane
         rootPane.getChildren().add(searchButton);  //(Line V32) Adds the VBox, searchButton, to the rootPane
-        }
+        int carParkId = 6;
+        java.lang.String review = "Good";
+        int five = 5;
+        Review r = new Review(0, carParkId, review, five);
+        ReviewService.saveReview(r, database);
     }
-
-
-
+}
 
 

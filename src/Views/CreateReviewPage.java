@@ -65,12 +65,14 @@ public class CreateReviewPage {
 
         HBox reviewStarPane = new HBox(10);
 
+        Boolean firstStarClicked = false;
         Image greyStar = new Image("Resources/star.jpg");
         Image yellowStar = new Image("Resources/YellowStar.jpg");
         Button firstStar = new Button();
         firstStar.setGraphic(new ImageView(greyStar));
         firstStar.setOnAction((ActionEvent e) -> {
             firstStar.setGraphic(new ImageView(yellowStar));
+      //      firstStarClicked = true;
         });
         reviewStarPane.getChildren().add(firstStar);
 
@@ -109,7 +111,7 @@ public class CreateReviewPage {
         Button sendButton = new Button("Send");
         sendButton.setPrefSize(200, 20);
         sendButton.setStyle("-fx-base: #4a86e8ff; -fx-text-fill: #FFFFFF; -fx-font-size: 24px;");
-        sendButton.setOnAction((ActionEvent e) -> CreateReviewPageController.returnStage(carParkId, stage));
+      //  sendButton.setOnAction((ActionEvent e) -> CreateReviewPageController.sendToSave(carParkId, stage, review));
         buttonPane.getChildren().add(sendButton);
 
         buttonPane.setAlignment(Pos.CENTER);
