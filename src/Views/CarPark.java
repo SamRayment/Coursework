@@ -58,7 +58,7 @@ public class CarPark {
 
         Models.CarPark theCarPark = CarParkService.selectById(this.carParkId, SearchPage.database);
         Location carParkLocation = LocationService.carParkLocation(this.carParkId, SearchPage.database);
-        TownCounty carParkTownCounty = TownCountyService.findCounty(carParkLocation.getTownCountyId(), SearchResults.database);
+        TownCounty carParkTownCounty = TownCountyService.findCounty(carParkLocation.getTownCountyId(), SearchPage.database);
 
         Label titleExample = new Label(theCarPark.getCarParkName());
         titleExample.setStyle("-fx-text-fill: white;");

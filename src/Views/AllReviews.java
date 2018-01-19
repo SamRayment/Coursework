@@ -72,7 +72,7 @@ public class AllReviews {
 
         ScrollPane searchPane = new ScrollPane();
         Image starImage =  new Image("Resources/YellowStar.jpg");
-        ArrayList<Review> carParkReview = ReviewService.selectById(carParkId, SearchResults.database);
+        ArrayList<Review> carParkReview = ReviewService.selectById(carParkId, SearchPage.database);
 
         HBox starBox = new HBox();
         VBox totalReview = new VBox();

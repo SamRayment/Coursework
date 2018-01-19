@@ -65,7 +65,7 @@ public class MembershipService {
     public static void save(Membership itemToSave, DatabaseConnection database) {
         Membership existingItem = null;
         if (itemToSave.getMembershipId() != 0)
-            existingItem = selectMemberById(itemToSave.getUsername(), itemToSave.getPassword(), database);
+            existingItem = selectMemberById(itemToSave.getMembershipId(), database);
         try {
             if (existingItem == null) {
                 PreparedStatement statement = database.newStatement("INSERT INTO Membership (Username, HashcodePassword) VALUES (?,?))");

@@ -25,7 +25,6 @@ public class SearchResults {
 
         static Stage parent;
 
-        public static DatabaseConnection database;
         public SearchResults(Stage theParent) {
 
             Stage stage = new Stage();
@@ -36,8 +35,6 @@ public class SearchResults {
         }
 
     public void start(Stage stage) {
-
-       database = new DatabaseConnection("Coursework.db");
 
 
         TownCounty selectedTown = SearchPage.townCitySelector.getSelectionModel().getSelectedItem();
@@ -88,7 +85,7 @@ public class SearchResults {
                                                         requirementsSelected.get("CCTV"),
                                                         requirementsSelected.get("Electric Charging"),
                                                         requirementsSelected.get("Disabled Parking"),
-                                                        requirementsSelected.get("Child Parking"), database);
+                                                        requirementsSelected.get("Child Parking"), SearchPage.database);
 
         for (Location l: carParkList) {
             HBox resultBox = new HBox();
@@ -100,7 +97,7 @@ public class SearchResults {
 
             VBox rightHandSide = new VBox();
 
-            Models.CarPark theCarPark = CarParkService.selectById(l.getCarParkId(), database);
+            Models.CarPark theCarPark = CarParkService.selectById(l.getCarParkId(), SearchPage.database);
 
             if(theCarPark.getProblems() == "N/A") {
                 colouredThing.setFill(Color.GREEN);

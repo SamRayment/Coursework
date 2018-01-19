@@ -1,10 +1,10 @@
 package Controller;
 
-import Models.DatabaseConnection;
 import Models.Membership;
 import Models.MembershipService;
 import Views.CreateReviewPage;
 import Views.LoginPage;
+import Views.SearchPage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -17,13 +17,13 @@ import java.security.NoSuchAlgorithmException;
 
 public class SignUpPageController {
 
-        public static DatabaseConnection database;
+
         public static void turnToHash(TextField usernameTextfield, PasswordField passwordField){
             String usernameAsString = usernameTextfield.toString();
             String passwordAsString = passwordField.toString();
             String hashedPassword = generateHash(passwordAsString);
             Membership m = new Membership(0, usernameAsString, hashedPassword);
-            MembershipService.save(m, database);
+            MembershipService.save(m, SearchPage.database);
         }
         
         public static String generateHash(String passwordAsString) {

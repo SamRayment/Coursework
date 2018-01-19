@@ -22,7 +22,7 @@ public class LoginPageController {
         String usernameAsString = usernameTextfield.getText();
         String passwordAsString = passwordField.getText();
         String hashedPassword = generateHash(passwordAsString);
-        Membership member = MembershipService.selectMemberUsernameAndPassword(usernameAsString, hashedPassword, SearchResults.database);
+        Membership member = MembershipService.selectMemberUsernameAndPassword(usernameAsString, hashedPassword, SearchPage.database);
         openCreateReviewPage(member, parent, carParkId);
     }
 
